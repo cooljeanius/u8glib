@@ -406,46 +406,53 @@ bdf2u8g_OBJECTS = $(am_bdf2u8g_OBJECTS)
 bdf2u8g_LDADD = $(LDADD)
 am_u8gsdl_2bit_OBJECTS = sys/sdl/2bit/u8gsdl_2bit-main.$(OBJEXT)
 u8gsdl_2bit_OBJECTS = $(am_u8gsdl_2bit_OBJECTS)
-u8gsdl_2bit_LDADD = $(LDADD)
+u8gsdl_2bit_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_2bit_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(u8gsdl_2bit_CFLAGS) \
 	$(CFLAGS) $(u8gsdl_2bit_LDFLAGS) $(LDFLAGS) -o $@
 am_u8gsdl_8bit_OBJECTS = sys/sdl/8bit/u8gsdl_8bit-main.$(OBJEXT)
 u8gsdl_8bit_OBJECTS = $(am_u8gsdl_8bit_OBJECTS)
-u8gsdl_8bit_LDADD = $(LDADD)
+u8gsdl_8bit_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_8bit_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(u8gsdl_8bit_CFLAGS) \
 	$(CFLAGS) $(u8gsdl_8bit_LDFLAGS) $(LDFLAGS) -o $@
 am_u8gsdl_chess_OBJECTS = sys/sdl/chess/u8gsdl_chess-main.$(OBJEXT)
 u8gsdl_chess_OBJECTS = $(am_u8gsdl_chess_OBJECTS)
-u8gsdl_chess_LDADD = $(LDADD)
+u8gsdl_chess_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_chess_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(u8gsdl_chess_CFLAGS) \
 	$(CFLAGS) $(u8gsdl_chess_LDFLAGS) $(LDFLAGS) -o $@
 am_u8gsdl_circle_OBJECTS =  \
 	sys/sdl/circle/u8gsdl_circle-main.$(OBJEXT)
 u8gsdl_circle_OBJECTS = $(am_u8gsdl_circle_OBJECTS)
-u8gsdl_circle_LDADD = $(LDADD)
+u8gsdl_circle_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_circle_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(u8gsdl_circle_LDFLAGS) $(LDFLAGS) -o $@
 am_u8gsdl_clip_OBJECTS = sys/pbm/cliptest/u8gsdl_clip-main.$(OBJEXT)
 u8gsdl_clip_OBJECTS = $(am_u8gsdl_clip_OBJECTS)
-u8gsdl_clip_LDADD = $(LDADD)
+u8gsdl_clip_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_clip_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(u8gsdl_clip_CFLAGS) \
 	$(CFLAGS) $(u8gsdl_clip_LDFLAGS) $(LDFLAGS) -o $@
 am_u8gsdl_cursor_OBJECTS =  \
 	sys/sdl/cursor/u8gsdl_cursor-main.$(OBJEXT)
 u8gsdl_cursor_OBJECTS = $(am_u8gsdl_cursor_OBJECTS)
-u8gsdl_cursor_LDADD = $(LDADD)
+u8gsdl_cursor_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_cursor_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(u8gsdl_cursor_LDFLAGS) $(LDFLAGS) -o $@
 am_u8gsdl_fonttop_OBJECTS =  \
 	sys/sdl/FontPosTop/u8gsdl_fonttop-main.$(OBJEXT)
 u8gsdl_fonttop_OBJECTS = $(am_u8gsdl_fonttop_OBJECTS)
-u8gsdl_fonttop_LDADD = $(LDADD)
+u8gsdl_fonttop_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_fonttop_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
 	$(AM_CFLAGS) $(CFLAGS) $(u8gsdl_fonttop_LDFLAGS) $(LDFLAGS) -o \
@@ -453,33 +460,38 @@ u8gsdl_fonttop_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 am_u8gsdl_fullcolor_OBJECTS =  \
 	sys/sdl/fullcolor/u8gsdl_fullcolor-main.$(OBJEXT)
 u8gsdl_fullcolor_OBJECTS = $(am_u8gsdl_fullcolor_OBJECTS)
-u8gsdl_fullcolor_LDADD = $(LDADD)
+u8gsdl_fullcolor_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_fullcolor_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
 	$(AM_CFLAGS) $(CFLAGS) $(u8gsdl_fullcolor_LDFLAGS) $(LDFLAGS) \
 	-o $@
 am_u8gsdl_gabc_OBJECTS = sys/sdl/gabc/u8gsdl_gabc-main.$(OBJEXT)
 u8gsdl_gabc_OBJECTS = $(am_u8gsdl_gabc_OBJECTS)
-u8gsdl_gabc_LDADD = $(LDADD)
+u8gsdl_gabc_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_gabc_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(u8gsdl_gabc_LDFLAGS) $(LDFLAGS) -o $@
 am_u8gsdl_gah_OBJECTS = sys/sdl/gA_h/u8gsdl_gah-main.$(OBJEXT)
 u8gsdl_gah_OBJECTS = $(am_u8gsdl_gah_OBJECTS)
-u8gsdl_gah_LDADD = $(LDADD)
+u8gsdl_gah_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_gah_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(u8gsdl_gah_LDFLAGS) $(LDFLAGS) -o $@
 am_u8gsdl_greek_OBJECTS = sys/sdl/greek/u8gsdl_greek-main.$(OBJEXT)
 u8gsdl_greek_OBJECTS = $(am_u8gsdl_greek_OBJECTS)
-u8gsdl_greek_LDADD = $(LDADD)
+u8gsdl_greek_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_greek_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(u8gsdl_greek_LDFLAGS) $(LDFLAGS) -o $@
 am_u8gsdl_helloworld_OBJECTS =  \
 	sys/sdl/helloworld/u8gsdl_helloworld-main.$(OBJEXT)
 u8gsdl_helloworld_OBJECTS = $(am_u8gsdl_helloworld_OBJECTS)
-u8gsdl_helloworld_LDADD = $(LDADD)
+u8gsdl_helloworld_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_helloworld_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
 	$(AM_CFLAGS) $(CFLAGS) $(u8gsdl_helloworld_LDFLAGS) $(LDFLAGS) \
@@ -487,7 +499,8 @@ u8gsdl_helloworld_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 am_u8gsdl_helloworldpp_OBJECTS =  \
 	sys/sdl/cpp_helloworld/u8gsdl_helloworldpp-main.$(OBJEXT)
 u8gsdl_helloworldpp_OBJECTS = $(am_u8gsdl_helloworldpp_OBJECTS)
-u8gsdl_helloworldpp_LDADD = $(LDADD)
+u8gsdl_helloworldpp_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_helloworldpp_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
 	$(AM_CXXFLAGS) $(CXXFLAGS) $(u8gsdl_helloworldpp_LDFLAGS) \
@@ -495,27 +508,31 @@ u8gsdl_helloworldpp_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 am_u8gsdl_hicolor_OBJECTS =  \
 	sys/sdl/hicolor/u8gsdl_hicolor-main.$(OBJEXT)
 u8gsdl_hicolor_OBJECTS = $(am_u8gsdl_hicolor_OBJECTS)
-u8gsdl_hicolor_LDADD = $(LDADD)
+u8gsdl_hicolor_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_hicolor_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
 	$(AM_CFLAGS) $(CFLAGS) $(u8gsdl_hicolor_LDFLAGS) $(LDFLAGS) -o \
 	$@
 am_u8gsdl_logo_OBJECTS = sys/sdl/cpp_logo/u8gsdl_logo-main.$(OBJEXT)
 u8gsdl_logo_OBJECTS = $(am_u8gsdl_logo_OBJECTS)
-u8gsdl_logo_LDADD = $(LDADD)
+u8gsdl_logo_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_logo_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(u8gsdl_logo_LDFLAGS) $(LDFLAGS) -o $@
 am_u8gsdl_menu_OBJECTS = sys/sdl/menu/u8gsdl_menu-main.$(OBJEXT)
 u8gsdl_menu_OBJECTS = $(am_u8gsdl_menu_OBJECTS)
-u8gsdl_menu_LDADD = $(LDADD)
+u8gsdl_menu_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_menu_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(u8gsdl_menu_LDFLAGS) $(LDFLAGS) -o $@
 am_u8gsdl_polygon_OBJECTS =  \
 	sys/sdl/polygon/u8gsdl_polygon-main.$(OBJEXT)
 u8gsdl_polygon_OBJECTS = $(am_u8gsdl_polygon_OBJECTS)
-u8gsdl_polygon_LDADD = $(LDADD)
+u8gsdl_polygon_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_polygon_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
 	$(AM_CFLAGS) $(CFLAGS) $(u8gsdl_polygon_LDFLAGS) $(LDFLAGS) -o \
@@ -523,21 +540,24 @@ u8gsdl_polygon_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 am_u8gsdl_spacetrash_OBJECTS =  \
 	sys/sdl/spacetrash/u8gsdl_spacetrash-spacemain.$(OBJEXT)
 u8gsdl_spacetrash_OBJECTS = $(am_u8gsdl_spacetrash_OBJECTS)
-u8gsdl_spacetrash_LDADD = $(LDADD)
+u8gsdl_spacetrash_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_spacetrash_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
 	$(AM_CFLAGS) $(CFLAGS) $(u8gsdl_spacetrash_LDFLAGS) $(LDFLAGS) \
 	-o $@
 am_u8gsdl_xbm_OBJECTS = sys/sdl/xbm/u8gsdl_xbm-main.$(OBJEXT)
 u8gsdl_xbm_OBJECTS = $(am_u8gsdl_xbm_OBJECTS)
-u8gsdl_xbm_LDADD = $(LDADD)
+u8gsdl_xbm_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gsdl.la
 u8gsdl_xbm_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(u8gsdl_xbm_LDFLAGS) $(LDFLAGS) -o $@
 am_u8gwpi_chess_OBJECTS = nonarduino/u8gwpi_chess-wpimain.$(OBJEXT) \
 	sys/arduino/Chess/u8gwpi_chess-Chess.$(OBJEXT)
 u8gwpi_chess_OBJECTS = $(am_u8gwpi_chess_OBJECTS)
-u8gwpi_chess_LDADD = $(LDADD)
+u8gwpi_chess_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gwpi.la
 u8gwpi_chess_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(u8gwpi_chess_LDFLAGS) $(LDFLAGS) -o $@
@@ -545,7 +565,7 @@ am_u8gwpi_chessdogm_OBJECTS =  \
 	nonarduino/u8gwpi_chessdogm-wpimain.$(OBJEXT) \
 	sys/arduino/ChessDogm/u8gwpi_chessdogm-Chess.$(OBJEXT)
 u8gwpi_chessdogm_OBJECTS = $(am_u8gwpi_chessdogm_OBJECTS)
-u8gwpi_chessdogm_LDADD = $(LDADD)
+u8gwpi_chessdogm_DEPENDENCIES = $(top_builddir)/libu8gwpi.la
 u8gwpi_chessdogm_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
 	$(AM_CXXFLAGS) $(CXXFLAGS) $(u8gwpi_chessdogm_LDFLAGS) \
@@ -553,14 +573,16 @@ u8gwpi_chessdogm_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 am_u8gwpi_gtest_OBJECTS = nonarduino/u8gwpi_gtest-wpimain.$(OBJEXT) \
 	sys/arduino/GraphicsTest/u8gwpi_gtest-GraphicsTest.$(OBJEXT)
 u8gwpi_gtest_OBJECTS = $(am_u8gwpi_gtest_OBJECTS)
-u8gwpi_gtest_LDADD = $(LDADD)
+u8gwpi_gtest_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gwpi.la
 u8gwpi_gtest_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(u8gwpi_gtest_LDFLAGS) $(LDFLAGS) -o $@
 am_u8gwpi_logo_OBJECTS = nonarduino/u8gwpi_logo-wpimain.$(OBJEXT) \
 	sys/arduino/U8gLogo/u8gwpi_logo-U8gLogo.$(OBJEXT)
 u8gwpi_logo_OBJECTS = $(am_u8gwpi_logo_OBJECTS)
-u8gwpi_logo_LDADD = $(LDADD)
+u8gwpi_logo_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gwpi.la
 u8gwpi_logo_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(u8gwpi_logo_LDFLAGS) $(LDFLAGS) -o $@
@@ -568,7 +590,8 @@ am_u8gwpi_spacetrash_OBJECTS =  \
 	nonarduino/u8gwpi_spacetrash-wpimain.$(OBJEXT) \
 	sys/arduino/SpaceTrashDogm/u8gwpi_spacetrash-SpaceTrash.$(OBJEXT)
 u8gwpi_spacetrash_OBJECTS = $(am_u8gwpi_spacetrash_OBJECTS)
-u8gwpi_spacetrash_LDADD = $(LDADD)
+u8gwpi_spacetrash_DEPENDENCIES = $(top_builddir)/libu8gbase.la \
+	$(top_builddir)/libu8gwpi.la
 u8gwpi_spacetrash_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CXXLD) \
 	$(AM_CXXFLAGS) $(CXXFLAGS) $(u8gwpi_spacetrash_LDFLAGS) \
@@ -976,6 +999,9 @@ AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
 CC = @CC@
+CCAS = @CCAS@
+CCASDEPMODE = @CCASDEPMODE@
+CCASFLAGS = @CCASFLAGS@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
 CPP = @CPP@
@@ -1088,6 +1114,7 @@ psdir = @psdir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 srcdir = @srcdir@
+subdirs = @subdirs@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
@@ -1098,6 +1125,7 @@ AM_LDFLAGS = -L$(top_builddir)/ -L$(top_srcdir)/ `getconf LFS_LDFLAGS` \
 	`getconf LFS64_LDFLAGS` $(NULL)
 AM_CFLAGS = -I$(top_builddir)/include/ -I$(top_srcdir)/include/ \
 	$(NULL) $(am__append_2) $(am__append_3)
+CLEANFILES = main.i main.s
 DISTCLEANFILES = *~ autoscan.log
 EXT_FLAGS = -DSVN_VERSION='"${GITNUMTMP}"'
 @MK@GITNUMTMP = $(shell cd "$(top_srcdir)"; A=$$(git show | head -n 1 | awk '{print $$2}'); echo $${A:0:7}; cd - > /dev/null )
@@ -1284,77 +1312,125 @@ bdf2u8g_SOURCES = \
 
 u8gsdl_clip_SOURCES = sys/pbm/cliptest/main.c
 u8gsdl_clip_CFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_clip_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_clip_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_clip_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_clip_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_2bit_SOURCES = sys/sdl/2bit/main.c
 u8gsdl_2bit_CFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_2bit_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_2bit_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_2bit_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_2bit_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_8bit_SOURCES = sys/sdl/8bit/main.c
 u8gsdl_8bit_CFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_8bit_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_8bit_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_8bit_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_8bit_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_chess_SOURCES = sys/sdl/chess/main.c
 u8gsdl_chess_CFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_chess_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_chess_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_chess_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_chess_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_circle_SOURCES = sys/sdl/circle/main.c
 u8gsdl_circle_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_circle_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_circle_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_circle_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_circle_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_helloworldpp_SOURCES = sys/sdl/cpp_helloworld/main.cpp
 u8gsdl_helloworldpp_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_helloworldpp_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_helloworldpp_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_helloworldpp_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_helloworldpp_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_cursor_SOURCES = sys/sdl/cursor/main.c
 u8gsdl_cursor_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_cursor_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_cursor_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_cursor_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_cursor_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_fonttop_SOURCES = sys/sdl/FontPosTop/main.c
 u8gsdl_fonttop_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_fonttop_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_fonttop_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_fonttop_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_fonttop_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_fullcolor_SOURCES = sys/sdl/fullcolor/main.c
-u8gsdl_fullcolor_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_fullcolor_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_fullcolor_CPPFLAGS = $(libu8gsdl_la_CFLAGS) -save-temps
+u8gsdl_fullcolor_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_fullcolor_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_fullcolor_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_gabc_SOURCES = sys/sdl/gabc/main.c
 u8gsdl_gabc_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_gabc_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_gabc_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_gabc_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_gabc_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_gah_SOURCES = sys/sdl/gA_h/main.c
 u8gsdl_gah_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_gah_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_gah_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_gah_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_gah_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_greek_SOURCES = sys/sdl/greek/main.c
 u8gsdl_greek_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_greek_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_greek_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_greek_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_greek_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_helloworld_SOURCES = sys/sdl/helloworld/main.c
 u8gsdl_helloworld_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_helloworld_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_helloworld_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_helloworld_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_helloworld_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_hicolor_SOURCES = sys/sdl/hicolor/main.c
 u8gsdl_hicolor_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_hicolor_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_hicolor_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_hicolor_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_hicolor_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_logo_SOURCES = sys/sdl/cpp_logo/main.cpp
 u8gsdl_logo_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_logo_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_logo_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_logo_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_logo_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_menu_SOURCES = sys/sdl/menu/main.c
 u8gsdl_menu_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_menu_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_menu_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_menu_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_menu_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_polygon_SOURCES = sys/sdl/polygon/main.c
 u8gsdl_polygon_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_polygon_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_polygon_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_polygon_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_polygon_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_spacetrash_SOURCES = sys/sdl/spacetrash/spacemain.c
 u8gsdl_spacetrash_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_spacetrash_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_spacetrash_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_spacetrash_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_spacetrash_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_xbm_SOURCES = sys/sdl/xbm/main.c
 u8gsdl_xbm_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-u8gsdl_xbm_LDFLAGS = -lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_xbm_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
+u8gsdl_xbm_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_xbm_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gwpi_logo_SOURCES = nonarduino/wpimain.cpp sys/arduino/U8gLogo/U8gLogo.pde
 u8gwpi_logo_CFLAGS = $(libu8gwpi_la_CFLAGS)
 u8gwpi_logo_CPPFLAGS = $(libu8gwpi_la_CFLAGS)
-u8gwpi_logo_LDFLAGS = -lu8gbase -lu8gwpi $(libu8gwpi_la_LDFLAGS)
+u8gwpi_logo_LDFLAGS = $(libu8gwpi_la_LDFLAGS)
+u8gwpi_logo_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
+EXTRA_u8gwpi_logo_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 u8gwpi_gtest_SOURCES = nonarduino/wpimain.cpp sys/arduino/GraphicsTest/GraphicsTest.pde
 u8gwpi_gtest_CPPFLAGS = $(libu8gwpi_la_CFLAGS)
-u8gwpi_gtest_LDFLAGS = -lu8gbase -lu8gwpi $(libu8gwpi_la_LDFLAGS)
+u8gwpi_gtest_LDFLAGS = $(libu8gwpi_la_LDFLAGS)
+u8gwpi_gtest_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
+EXTRA_u8gwpi_gtest_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 u8gwpi_spacetrash_SOURCES = nonarduino/wpimain.cpp sys/arduino/SpaceTrashDogm/SpaceTrash.pde
 u8gwpi_spacetrash_CPPFLAGS = $(libu8gwpi_la_CFLAGS)
-u8gwpi_spacetrash_LDFLAGS = -lu8gbase -lu8gwpi $(libu8gwpi_la_LDFLAGS)
+u8gwpi_spacetrash_LDFLAGS = $(libu8gwpi_la_LDFLAGS)
+u8gwpi_spacetrash_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
+EXTRA_u8gwpi_spacetrash_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 u8gwpi_chess_SOURCES = nonarduino/wpimain.cpp sys/arduino/Chess/Chess.pde
 u8gwpi_chess_CPPFLAGS = $(libu8gwpi_la_CFLAGS)
-u8gwpi_chess_LDFLAGS = -lu8gbase -lu8gwpi $(libu8gwpi_la_LDFLAGS)
+u8gwpi_chess_LDFLAGS = $(libu8gwpi_la_LDFLAGS)
+u8gwpi_chess_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
+EXTRA_u8gwpi_chess_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 u8gwpi_chessdogm_SOURCES = nonarduino/wpimain.cpp sys/arduino/ChessDogm/Chess.pde
 u8gwpi_chessdogm_CPPFLAGS = $(libu8gwpi_la_CFLAGS)
-u8gwpi_chessdogm_LDFLAGS = -lu8gwpi $(libu8gwpi_la_LDFLAGS)
+u8gwpi_chessdogm_LDFLAGS = $(libu8gwpi_la_LDFLAGS)
+u8gwpi_chessdogm_LDADD = $(top_builddir)/libu8gwpi.la
+EXTRA_u8gwpi_chessdogm_DEPENDENCIES = $(top_builddir)/libu8gwpi.la
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -5073,6 +5149,7 @@ install-strip:
 mostlyclean-generic:
 
 clean-generic:
+	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)

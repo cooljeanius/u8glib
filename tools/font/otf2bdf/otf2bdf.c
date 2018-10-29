@@ -521,6 +521,7 @@ print_encoding_table(void)
                platform, (int) (14 - strlen(platform)), spaces,
                encoding, (int) (14 - strlen(encoding)), spaces, pid, eid);
     }
+    (void)lasteid;
 }
 
 /**************************************************************************
@@ -540,7 +541,7 @@ make_xlfd_name(char *name, int name_size, FT_Long awidth, int ismono)
     FT_ULong val;
     char *r, *e;
     double dr, dp;
-    TT_OS2 *os2 = FT_Get_Sfnt_Table(face, ft_sfnt_os2);
+    TT_OS2 *os2 = (TT_OS2 *)FT_Get_Sfnt_Table(face, ft_sfnt_os2);
 
     /*
      * Default the foundry name to "FreeType" in honor of the project and
@@ -736,7 +737,7 @@ generate_font(FILE *out, char *iname, char *oname)
     char *tmpdir, tmpfile[BUFSIZ];
 
     imetrics = face->size->metrics;
-    horizontal = FT_Get_Sfnt_Table(face, ft_sfnt_hhea);
+    horizontal = (TT_HoriHeader *)FT_Get_Sfnt_Table(face, ft_sfnt_hhea);
 
     /*
      * Clear the BBX.
@@ -1081,7 +1082,7 @@ generate_font(FILE *out, char *iname, char *oname)
         if (fwrite(iobuf, 1, ng, out) == 0)
           eof = EOF;
     }
-        
+
     /*
      * Close the temporary file and delete it.
      */

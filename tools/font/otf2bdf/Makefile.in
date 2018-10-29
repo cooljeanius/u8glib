@@ -24,11 +24,15 @@ RM = @RM@
 CP = @CP@
 MKINSTALLDIRS = ./mkinstalldirs
 
+FREETYPE_CONFIG = @FREETYPE_CONFIG@
+
 CC = @CC@
 CFLAGS = @XX_CFLAGS@ @CFLAGS@
 
 SRCS = remap.c otf2bdf.c
 OBJS = remap.o otf2bdf.o
+
+OLDLIBS = @OLDLIBS@
 
 #
 # Point these at the FreeType source directories.
@@ -41,6 +45,7 @@ prefix = @prefix@
 exec_prefix = @exec_prefix@
 bindir = @bindir@
 mandir = @mandir@
+datarootdir = @datarootdir@
 
 all: otf2bdf
 
@@ -54,7 +59,8 @@ realclean: clean
 	$(RM) -f otf2bdf
 
 distclean: clean
-	$(RM) -f otf2bdf config.* Makefile
+	$(RM) -f otf2bdf config.* Makefile *.log
+	$(RM) -rf autom4te.cache || rmdir autom4te.cache
 
 .c.o:
 	$(CC) $(CFLAGS) $(INCS) -c $< -o $@

@@ -3,6 +3,7 @@ ACLOCAL_AMFLAGS = -I m4
 AM_LDFLAGS=
 AM_CFLAGS=
 
+CLEANFILES = main.i main.s
 DISTCLEANFILES = *~ autoscan.log
 
 DEFS+= \
@@ -248,79 +249,117 @@ noinst_PROGRAMS=$(BIN_WPI)
 
 u8gsdl_clip_SOURCES=sys/pbm/cliptest/main.c
 u8gsdl_clip_CFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_clip_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_clip_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_clip_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_clip_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_2bit_SOURCES=sys/sdl/2bit/main.c
 u8gsdl_2bit_CFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_2bit_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_2bit_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_2bit_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_2bit_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_8bit_SOURCES=sys/sdl/8bit/main.c
 u8gsdl_8bit_CFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_8bit_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_8bit_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_8bit_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_8bit_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_chess_SOURCES=sys/sdl/chess/main.c
 u8gsdl_chess_CFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_chess_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_chess_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_chess_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_chess_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_circle_SOURCES=sys/sdl/circle/main.c
 u8gsdl_circle_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_circle_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_circle_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_circle_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_circle_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_helloworldpp_SOURCES=sys/sdl/cpp_helloworld/main.cpp
 u8gsdl_helloworldpp_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_helloworldpp_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_helloworldpp_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_helloworldpp_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_helloworldpp_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_cursor_SOURCES=sys/sdl/cursor/main.c
 u8gsdl_cursor_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_cursor_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_cursor_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_cursor_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_cursor_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_fonttop_SOURCES=sys/sdl/FontPosTop/main.c
 u8gsdl_fonttop_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_fonttop_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_fonttop_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_fonttop_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_fonttop_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_fullcolor_SOURCES=sys/sdl/fullcolor/main.c
-u8gsdl_fullcolor_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_fullcolor_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_fullcolor_CPPFLAGS=$(libu8gsdl_la_CFLAGS) -save-temps
+u8gsdl_fullcolor_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_fullcolor_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_fullcolor_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_gabc_SOURCES=sys/sdl/gabc/main.c
 u8gsdl_gabc_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_gabc_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_gabc_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_gabc_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_gabc_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_gah_SOURCES=sys/sdl/gA_h/main.c
 u8gsdl_gah_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_gah_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_gah_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_gah_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_gah_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_greek_SOURCES=sys/sdl/greek/main.c
 u8gsdl_greek_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_greek_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_greek_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_greek_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_greek_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_helloworld_SOURCES=sys/sdl/helloworld/main.c
 u8gsdl_helloworld_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_helloworld_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_helloworld_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_helloworld_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_helloworld_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_hicolor_SOURCES=sys/sdl/hicolor/main.c
 u8gsdl_hicolor_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_hicolor_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_hicolor_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_hicolor_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_hicolor_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_logo_SOURCES=sys/sdl/cpp_logo/main.cpp
 u8gsdl_logo_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_logo_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_logo_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_logo_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_logo_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_menu_SOURCES=sys/sdl/menu/main.c
 u8gsdl_menu_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_menu_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_menu_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_menu_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_menu_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_polygon_SOURCES=sys/sdl/polygon/main.c
 u8gsdl_polygon_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_polygon_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_polygon_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_polygon_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_polygon_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_spacetrash_SOURCES=sys/sdl/spacetrash/spacemain.c
 u8gsdl_spacetrash_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_spacetrash_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_spacetrash_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_spacetrash_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_spacetrash_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_xbm_SOURCES=sys/sdl/xbm/main.c
 u8gsdl_xbm_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-u8gsdl_xbm_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
+u8gsdl_xbm_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
+u8gsdl_xbm_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
+EXTRA_u8gsdl_xbm_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 .pde.cpp:
 	cp $< $@
@@ -330,23 +369,33 @@ u8gsdl_xbm_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
 u8gwpi_logo_SOURCES=nonarduino/wpimain.cpp sys/arduino/U8gLogo/U8gLogo.pde
 u8gwpi_logo_CFLAGS=$(libu8gwpi_la_CFLAGS)
 u8gwpi_logo_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
-u8gwpi_logo_LDFLAGS=-lu8gbase -lu8gwpi $(libu8gwpi_la_LDFLAGS)
+u8gwpi_logo_LDFLAGS=$(libu8gwpi_la_LDFLAGS)
+u8gwpi_logo_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
+EXTRA_u8gwpi_logo_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 
 u8gwpi_gtest_SOURCES=nonarduino/wpimain.cpp sys/arduino/GraphicsTest/GraphicsTest.pde
 u8gwpi_gtest_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
-u8gwpi_gtest_LDFLAGS=-lu8gbase -lu8gwpi $(libu8gwpi_la_LDFLAGS)
+u8gwpi_gtest_LDFLAGS=$(libu8gwpi_la_LDFLAGS)
+u8gwpi_gtest_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
+EXTRA_u8gwpi_gtest_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 
 u8gwpi_spacetrash_SOURCES=nonarduino/wpimain.cpp sys/arduino/SpaceTrashDogm/SpaceTrash.pde
 u8gwpi_spacetrash_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
-u8gwpi_spacetrash_LDFLAGS=-lu8gbase -lu8gwpi $(libu8gwpi_la_LDFLAGS)
+u8gwpi_spacetrash_LDFLAGS=$(libu8gwpi_la_LDFLAGS)
+u8gwpi_spacetrash_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
+EXTRA_u8gwpi_spacetrash_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 
 u8gwpi_chess_SOURCES=nonarduino/wpimain.cpp sys/arduino/Chess/Chess.pde
 u8gwpi_chess_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
-u8gwpi_chess_LDFLAGS=-lu8gbase -lu8gwpi $(libu8gwpi_la_LDFLAGS)
+u8gwpi_chess_LDFLAGS=$(libu8gwpi_la_LDFLAGS)
+u8gwpi_chess_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
+EXTRA_u8gwpi_chess_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 
 u8gwpi_chessdogm_SOURCES=nonarduino/wpimain.cpp sys/arduino/ChessDogm/Chess.pde
 u8gwpi_chessdogm_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
-u8gwpi_chessdogm_LDFLAGS=-lu8gwpi $(libu8gwpi_la_LDFLAGS)
+u8gwpi_chessdogm_LDFLAGS=$(libu8gwpi_la_LDFLAGS)
+u8gwpi_chessdogm_LDADD=$(top_builddir)/libu8gwpi.la
+EXTRA_u8gwpi_chessdogm_DEPENDENCIES=$(top_builddir)/libu8gwpi.la
 
 distclean-local:
 	rm -rf autom4te.cache || rmdir autom4te.cache

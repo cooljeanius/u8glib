@@ -27,7 +27,7 @@ uint8_t isKeyPad = 0;
 
 // setup the user interface
 void uiSetup(void) {
-  
+
   // configure internal variables
   isKeyPad = 0;
   // assign some (more or less) useful values to the output variables
@@ -64,19 +64,20 @@ void uiStep(void) {
 
 u8g_t u8g;
 
-int main(void)
+/* Needs to match prototype in <SDL/SDL_main.h>: */
+int main(int argc, char *argv[])
 {
   uint32_t x;
 
   if ( u8g_Init(&u8g, &u8g_dev_sdl_1bit) == 0 )
     return 0;
-  
+
   st_Setup(&u8g);
-  
+
   uiSetup();
-  
+
   for(x = 0; x < 4000; x++)
-  {    
+  {
     u8g_FirstPage(&u8g);
     do
     {
@@ -85,8 +86,8 @@ int main(void)
     SDL_Delay(10);
     uiStep();
     st_Step(shipLocation, isAutoFire, isFire);
-    
-  }  
+
+  }
   return 0;
 }
 

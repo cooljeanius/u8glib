@@ -480,6 +480,9 @@ add_mapping(unsigned char *line, unsigned long linelen, unsigned long lineno,
 {
     unsigned short key, val;
 
+    (void)lineno;
+    (void)client_data;
+
     /*
      * Split the line into parts separted by one or more spaces or tabs.
      */

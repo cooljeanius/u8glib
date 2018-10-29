@@ -8,8 +8,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/* FIXME: come up with a better test for what kind of section names the
+ * assembler supports: */
+#ifdef __APPLE__
+# define AAFONT_9x18_SECTNAME "__TEXT,pmu8gaaf9x18"
+# define AAFONT_timR24_SECTNAME "__TEXT,pmu8gaaftimR24"
+#else
+# define AAFONT_9x18_SECTNAME ".progmem.u8g_aafont_9x18"
+# define AAFONT_timR24_SECTNAME ".progmem.u8g_aafont_timR24"
+#endif /* __APPLE */
 
-const u8g_fntpgm_uint8_t u8g_aafont_9x18[7201] U8G_SECTION(".progmem.u8g_aafont_9x18") = {
+const u8g_fntpgm_uint8_t u8g_aafont_9x18[7201] U8G_SECTION(AAFONT_9x18_SECTNAME) = {
   2,9,18,0,252,10,4,50,9,18,32,255,253,14,253,16,
   253,2,2,2,9,255,13,0,0,3,13,13,9,3,255,0,
   48,48,48,48,48,48,48,0,0,48,48,0,6,6,12,9,
@@ -462,8 +471,8 @@ const u8g_fntpgm_uint8_t u8g_aafont_9x18[7201] U8G_SECTION(".progmem.u8g_aafont_
   244,0,0,240,0,0,208,0,53,192,0,31,64,0,0,0,
   0};
 
-  
-  const u8g_fntpgm_uint8_t u8g_aafont_timR24[21985] U8G_SECTION(".progmem.u8g_aafont_timR24") = {
+
+const u8g_fntpgm_uint8_t u8g_aafont_timR24[21985] U8G_SECTION(AAFONT_timR24_SECTNAME) = {
   2,38,48,251,245,23,11,218,29,72,32,255,249,30,249,23,
   249,2,2,2,8,255,0,0,0,6,25,50,11,2,255,0,
   0,31,64,63,192,63,192,63,192,63,192,63,192,31,64,15,
@@ -1850,10 +1859,10 @@ int main(void)
   u8g_uint_t w,h;
   u8g_uint_t r, g, b, x, y;
   u8g_t u8g;
-  
+
   u8g_Init(&u8g, &u8g_dev_sdl_fullcolor);
   u8g_SetRot180(&u8g);
-  
+
   u8g_FirstPage(&u8g);
   do
   {
@@ -1880,7 +1889,7 @@ int main(void)
         u8g_SetRGB(&u8g, r<<3, g<<3, (b<<5)+64 );
 	u8g_DrawPixel(&u8g, g + b*32, r+32);
       }
-    
+
     w = u8g_GetFontBBXWidth(&u8g);
     h = u8g_GetFontBBXHeight(&u8g);
     //u8g_SetColorIndex(&u8g, 1);
@@ -1888,7 +1897,7 @@ int main(void)
     u8g_SetRGB(&u8g, 255,255,255);
     u8g_SetFont(&u8g, u8g_aafont_timR24);
     u8g_DrawAAStr(&u8g, 20, 26, "U8glib");
-      
+
     u8g_SetFont(&u8g, u8g_font_timR24);
     u8g_DrawStr(&u8g, 20, 56, "U8glib");
     //u8g_SetHiColorByRGB(&u8g, 0, 255, 0);
@@ -1896,12 +1905,12 @@ int main(void)
     //u8g_DrawAAStr(&u8g, 20+1, 40+1, "U8glib");
     //u8g_SetHiColorByRGB(&u8g, 255, 255, 255);
     //u8g_DrawStr(&u8g, 20+2, 40+2, "U8glib");
-    
+
   }while( u8g_NextPage(&u8g) );
-  
+
   while( u8g_sdl_get_key() < 0 )
     ;
-  
+
   return 0;
 }
 

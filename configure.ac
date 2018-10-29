@@ -28,6 +28,7 @@ AC_PROG_CPP
 AC_PROG_CXX
 AC_PROG_GCC_TRADITIONAL
 AM_PROG_AR
+AM_PROG_AS
 AC_PROG_INSTALL
 AC_PROG_LN_S
 
@@ -103,4 +104,5 @@ AC_CHECK_FUNCS([atexit memset rand sqrt strerror st_Setup u8g_GetGlyph \
 
 # Output.
 AC_CONFIG_FILES([Makefile])
+AC_CONFIG_SUBDIRS([tools/font/otf2bdf])
 AC_OUTPUT
