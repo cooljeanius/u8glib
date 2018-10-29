@@ -1,0 +1,132 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.69])
+AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
+AC_CONFIG_SRCDIR([config.h.in])
+AC_CONFIG_HEADERS([config.h])
+
+# Checks for programs.
+AC_PROG_CXX
+AC_PROG_AWK
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+AC_PROG_RANLIB
+
+# Checks for libraries.
+# FIXME: Replace `main' with a function in `-lc':
+AC_CHECK_LIB([c], [main])
+# FIXME: Replace `main' with a function in `-lnosys':
+AC_CHECK_LIB([nosys], [main])
+# FIXME: Replace `main' with a function in `-lu8gbase':
+AC_CHECK_LIB([u8gbase], [main])
+# FIXME: Replace `main' with a function in `-lu8gsdl':
+AC_CHECK_LIB([u8gsdl], [main])
+# FIXME: Replace `main' with a function in `-lu8gwpi':
+AC_CHECK_LIB([u8gwpi], [main])
+# FIXME: Replace `main' with a function in `-lwiringPi':
+AC_CHECK_LIB([wiringPi], [main])
+
+# Checks for header files.
+AC_CHECK_HEADERS([fcntl.h float.h inttypes.h stddef.h stdint.h stdlib.h string.h sys/ioctl.h termios.h unistd.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_CHECK_HEADER_STDBOOL
+AC_C_INLINE
+AC_TYPE_INT16_T
+AC_TYPE_INT32_T
+AC_TYPE_INT64_T
+AC_TYPE_INT8_T
+AC_TYPE_SIZE_T
+AC_TYPE_UINT16_T
+AC_TYPE_UINT32_T
+AC_TYPE_UINT64_T
+AC_TYPE_UINT8_T
+
+# Checks for library functions.
+AC_FUNC_MALLOC
+AC_CHECK_FUNCS([atexit memset sqrt strerror])
+
+AC_CONFIG_FILES([Makefile
+                 prj/lpc810/src/Makefile
+                 prj/lpc812/src/Makefile
+                 sys/arm/lpc1114/computer/Makefile
+                 sys/arm/lpc1114/graphics_test/Makefile
+                 sys/arm/lpc1114/hello_world/Makefile
+                 sys/arm/lpc1114/i2c_test/Makefile
+                 sys/arm/lpc1114/menu/Makefile
+                 sys/arm/lpc1114/show_port/Makefile
+                 sys/arm/lpc1114/u8g_logo/Makefile
+                 sys/arm/lpc1226/graphics_test/Makefile
+                 sys/arm/lpc1226/hello_world/Makefile
+                 sys/arm/lpc1226/menu/Makefile
+                 sys/arm/lpc1226/u8g_logo/Makefile
+                 sys/arm/lpc810/blink/Makefile
+                 sys/arm/lpc810/hello_world/Makefile
+                 sys/atmega/graphics_test/Makefile
+                 sys/atmega/hello_world/Makefile
+                 sys/atmega/menu/Makefile
+                 sys/atmega/u8g_logo/Makefile
+                 sys/attiny84/analog_value/Makefile
+                 sys/attiny84/hello_world/Makefile
+                 sys/gtk3/Makefile
+                 sys/i2cdev/chess/Makefile
+                 sys/i2cdev/graphics_test/Makefile
+                 sys/i2cdev/helloworld/Makefile
+                 sys/i2cdev/menu/Makefile
+                 sys/i2cdev/u8g_logo/Makefile
+                 sys/lpc11xx/blink/Makefile
+                 sys/lpc11xx/delayblink/Makefile
+                 sys/lpc11xx/gps/Makefile
+                 sys/lpc11xx/plain/Makefile
+                 sys/lpc11xx/spitest/Makefile
+                 sys/lpc11xx/systickblink/Makefile
+                 sys/lpc11xx/u8ghwspi/Makefile
+                 sys/lpc11xx/u8gtemplate/Makefile
+                 sys/lpc11xx/uart/Makefile
+                 sys/lpc11xx/uart_irq/Makefile
+                 sys/msp430/graphics_test/Makefile
+                 sys/pbm/cliptest/Makefile
+                 sys/pbm/cliptest_gr/Makefile
+                 sys/pbm/helloworld/Makefile
+                 sys/pic/hello_world/Makefile
+                 sys/sdl/2bit/Makefile
+                 sys/sdl/8bit/Makefile
+                 sys/sdl/FontPosTop/Makefile
+                 sys/sdl/chess/Makefile
+                 sys/sdl/circle/Makefile
+                 sys/sdl/cpp_helloworld/Makefile
+                 sys/sdl/cpp_logo/Makefile
+                 sys/sdl/cursor/Makefile
+                 sys/sdl/fullcolor/Makefile
+                 sys/sdl/gA_h/Makefile
+                 sys/sdl/gabc/Makefile
+                 sys/sdl/greek/Makefile
+                 sys/sdl/helloworld/Makefile
+                 sys/sdl/hicolor/Makefile
+                 sys/sdl/menu/Makefile
+                 sys/sdl/polygon/Makefile
+                 sys/sdl/spacetrash/Makefile
+                 sys/sdl/xbm/Makefile
+                 sys/stdout/flipdisk/Makefile
+                 sys/stdout/flipdisk_vs/Makefile
+                 sys/stdout/helloworld/Makefile
+                 sys/stdout/rotation/Makefile
+                 tools/bmp/Makefile
+                 tools/descpic/Makefile
+                 tools/font/bdf2u8g/Makefile
+                 tools/font/overview/Makefile
+                 tools/release/avr/Makefile
+                 tools/table2html/Makefile
+                 u8g2/sys/sdl/hello_world_8x8/Makefile
+                 u8g2/sys/sdl/hvline/Makefile
+                 u8g2/sys/sdl/text_full_buffer/Makefile
+                 u8g2/sys/sdl/text_picture_loop/Makefile
+                 u8g2/sys/stdio/Makefile
+                 u8g2/sys/tga/hello_world_8x8/Makefile
+                 u8g2/sys/tga/text_picture_loop/Makefile])
+AC_CONFIG_SUBDIRS([tools/font/otf2bdf])
+AC_OUTPUT

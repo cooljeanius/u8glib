@@ -1,9 +1,14 @@
 
+ACLOCAL_AMFLAGS = -I m4
 AM_LDFLAGS=
 AM_CFLAGS=
 
+DISTCLEANFILES = *~ autoscan.log
+
 DEFS+= \
     -Icsrc -Icppsrc -Idogmsrc -Inonarduino \
+    -I$(top_srcdir)/csrc -I$(top_srcdir)/cppsrc -I$(top_srcdir)/dogmsrc \
+    -I$(top_srcdir)/nonarduino \
     `getconf LFS_CFLAGS` \
     `getconf LFS64_CFLAGS` \
     -D_GNU_SOURCE \
@@ -12,10 +17,12 @@ DEFS+= \
 
 AM_CFLAGS+= \
     -I$(top_builddir)/include/ \
+    -I$(top_srcdir)/include/ \
     $(NULL)
 
 AM_LDFLAGS += \
     -L$(top_builddir)/ \
+    -L$(top_srcdir)/ \
     `getconf LFS_LDFLAGS` \
     `getconf LFS64_LDFLAGS` \
     $(NULL)
@@ -320,8 +327,6 @@ u8gsdl_xbm_LDFLAGS=-lu8gbase -lu8gsdl $(libu8gsdl_la_LDFLAGS)
 .ino.o:
 	cp $< $@
 
-#u8gwpi_logo_SOURCES=sys/arm/examples/u8g_logo/u8g_logo.c
-#u8gwpi_logo_SOURCES=sys/atmega/u8g_logo/u8g_logo.c
 u8gwpi_logo_SOURCES=nonarduino/wpimain.cpp sys/arduino/U8gLogo/U8gLogo.pde
 u8gwpi_logo_CFLAGS=$(libu8gwpi_la_CFLAGS)
 u8gwpi_logo_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
@@ -331,7 +336,7 @@ u8gwpi_gtest_SOURCES=nonarduino/wpimain.cpp sys/arduino/GraphicsTest/GraphicsTes
 u8gwpi_gtest_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
 u8gwpi_gtest_LDFLAGS=-lu8gbase -lu8gwpi $(libu8gwpi_la_LDFLAGS)
 
-u8gwpi_spacetrash_SOURCES=nonarduino/wpimain.cpp sys/arduino/SpaceTrashDogm/SpaceTrash.pde #sys/sdl/spacetrash/spacemain.c
+u8gwpi_spacetrash_SOURCES=nonarduino/wpimain.cpp sys/arduino/SpaceTrashDogm/SpaceTrash.pde
 u8gwpi_spacetrash_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
 u8gwpi_spacetrash_LDFLAGS=-lu8gbase -lu8gwpi $(libu8gwpi_la_LDFLAGS)
 
@@ -342,3 +347,6 @@ u8gwpi_chess_LDFLAGS=-lu8gbase -lu8gwpi $(libu8gwpi_la_LDFLAGS)
 u8gwpi_chessdogm_SOURCES=nonarduino/wpimain.cpp sys/arduino/ChessDogm/Chess.pde
 u8gwpi_chessdogm_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
 u8gwpi_chessdogm_LDFLAGS=-lu8gwpi $(libu8gwpi_la_LDFLAGS)
+
+distclean-local:
+	rm -rf autom4te.cache || rmdir autom4te.cache

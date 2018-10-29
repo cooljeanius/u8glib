@@ -1,77 +1,106 @@
-#                                               -*- Autoconf -*-
-# Process this file with autoconf to produce a configure script.
+dnl#                                               -*- Autoconf -*-
+dnl# Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT(u8glib, 1.18, [BUG-REPORT-ADDRESS])
+AC_INIT([u8glib],[1.18],[BUG-REPORT-ADDRESS])
 AC_CONFIG_SRCDIR([csrc/u8g_font.c])
 AC_CONFIG_HEADERS([config.h])
-AM_INIT_AUTOMAKE(-Wall subdir-objects)
+AC_CONFIG_MACRO_DIRS([m4])
+AM_INIT_AUTOMAKE([-Wall subdir-objects])
+AM_MAINTAINER_MODE
 
 #magic for conditional check in Makefile:
-MK=''; AC_SUBST(MK)
+MK=''; AC_SUBST([MK])
 SED=sed
 
 # Checks for programs.
-AC_PROG_AWK
-AC_PROG_CXX
-AC_PROG_CC
-AM_PROG_CC_C_O
+AC_DEFUN([AC_REQUIRE_PROGS],[
+  AC_REQUIRE([AC_PROG_AWK])dnl
+  AC_REQUIRE([AC_PROG_MAKE_SET])dnl
+  AC_REQUIRE([AC_PROG_CC])dnl
+  m4_ifdef([AM_PROG_CC_C_O],[
+    AC_REQUIRE([AM_PROG_CC_C_O])dnl
+  ])dnl
+  AC_REQUIRE([AC_PROG_RANLIB])dnl
+])dnl
+AC_REQUIRE_PROGS
 AC_PROG_CPP
+AC_PROG_CXX
+AC_PROG_GCC_TRADITIONAL
 AM_PROG_AR
-AC_PROG_LIBTOOL
+AC_PROG_INSTALL
+AC_PROG_LN_S
 
 # Checks for libraries.
 LT_PREREQ([2.2])
-#LT_INIT([shared static])
-LT_INIT([disable-static])
+LT_INIT([disable-static])dnl
 
 # debug
 AC_ARG_ENABLE([debug],
-	AS_HELP_STRING([--enable-debug],[Compile the debug version (default: disabled)]),
-	[enable_debug=$enableval],
+	[AS_HELP_STRING([--enable-debug],
+                        [Compile the debug version (default: disabled)])],
+	[enable_debug=${enableval}],
 	[enable_debug=no])
-AM_CONDITIONAL([DEBUG], [test $enable_debug = "yes"])
-if test "x$enable_debug" = "xyes"; then
+AM_CONDITIONAL([DEBUG],[test $enable_debug = "yes"])
+if test "x${enable_debug}" = "xyes"; then
+  dnl# Have to do "changequote" because of how sed is called here:
   changequote({,})
   CFLAGS=`echo "$CFLAGS" | $SED -e 's/-O[0-9s]*//g'`
   CXXFLAGS=`echo "$CXXFLAGS" | $SED -e 's/-O[0-9s]*//g'`
   changequote([,])
-  dnl add -O0 only if GCC or ICC is used
-  if test "$GCC" = "yes" || test "$ICC" = "yes"; then
-    CFLAGS="$CFLAGS -g -O0 -Wall"
-    CXXFLAGS="$CXXFLAGS -g -O0 -Wall"
+  dnl# add -O0 only if GCC or ICC is used
+  if test "x${GCC}" = "xyes" || test "x${ICC}" = "xyes"; then
+    CFLAGS="${CFLAGS} -g -O0 -Wall"
+    CXXFLAGS="${CXXFLAGS} -g -O0 -Wall"
   fi
 else
-  changequote({,})
-  CFLAGS=`echo "$CFLAGS" | $SED -e 's/-g//g'`
-  CXXFLAGS=`echo "$CXXFLAGS" | $SED -e 's/-g//g'`
-  changequote([,])
+  dnl# "changequote" is evil; no need to use it here:
+  CFLAGS=`echo "${CFLAGS}" | ${SED} -e 's/-g//g'`
+  CXXFLAGS=`echo "${CXXFLAGS}" | ${SED} -e 's/-g//g'`
 fi
 
 # Checks for libraries.
-# FIXME: Replace `main' with a function in `-lwiringPi':
-AC_CHECK_LIB([wiringPi], [main])
+AC_CHECK_LIB([c],[strerror])dnl
+dnl# FIXME: Replace `main' with a function in `-lnosys':
+AC_CHECK_LIB([nosys],[main])dnl
+dnl# FIXME: Replace `main' with a function in `-lu8gbase':
+AC_CHECK_LIB([u8gbase],[main])dnl
+dnl# FIXME: Replace `main' with a function in `-lu8gsdl':
+AC_CHECK_LIB([u8gsdl],[main])dnl
+dnl# FIXME: Replace `main' with a function in `-lu8gwpi':
+AC_CHECK_LIB([u8gwpi],[main])dnl
+dnl# FIXME: Replace `main' with a function in `-lwiringPi':
+AC_CHECK_LIB([wiringPi],[main])dnl
 
 # Checks for header files.
-AC_CHECK_HEADERS([float.h stddef.h stdint.h stdlib.h string.h])
+AC_HEADER_STDBOOL dnl# also "_CHECK"s it
+AC_DEFUN([AC_REQUIRE_HEADER_STDC],[
+  AC_REQUIRE([AC_HEADER_STDC])dnl
+])dnl
+AC_REQUIRE_HEADER_STDC
+AC_CHECK_HEADERS([fcntl.h float.h stddef.h sys/ioctl.h termios.h wiringPi.h \
+                  wiringPiSPI.h])dnl
 
 # Checks for typedefs, structures, and compiler characteristics.
-AC_CHECK_HEADER_STDBOOL
+AC_SYS_LARGEFILE
+AC_C_CONST
 AC_C_INLINE
+AC_C_VOLATILE
+AC_TYPE_INT8_T
 AC_TYPE_INT16_T
 AC_TYPE_INT32_T
 AC_TYPE_INT64_T
-AC_TYPE_INT8_T
 AC_TYPE_SIZE_T
+AC_TYPE_UINT8_T
 AC_TYPE_UINT16_T
 AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
-AC_TYPE_UINT8_T
 
 # Checks for library functions.
-AC_CHECK_FUNCS([atexit memset sqrt strerror])
+AC_FUNC_MALLOC
+AC_CHECK_FUNCS([atexit memset rand sqrt strerror st_Setup u8g_GetGlyph \
+                usleep])dnl
 
-AC_CONFIG_FILES([Makefile
-                 ])
-#AC_CONFIG_SUBDIRS([tools/font/otf2bdf])
+# Output.
+AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

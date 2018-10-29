@@ -3,53 +3,56 @@
   u8g_delay.c
 
   Universal 8bit Graphics Library
-  
+
   Copyright (c) 2011, olikraus@gmail.com
   All rights reserved.
 
-  Redistribution and use in source and binary forms, with or without modification, 
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
 
-  * Redistributions of source code must retain the above copyright notice, this list 
+  * Redistributions of source code must retain the above copyright notice, this list
     of conditions and the following disclaimer.
-    
-  * Redistributions in binary form must reproduce the above copyright notice, this 
-    list of conditions and the following disclaimer in the documentation and/or other 
+
+  * Redistributions in binary form must reproduce the above copyright notice, this
+    list of conditions and the following disclaimer in the documentation and/or other
     materials provided with the distribution.
 
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
-  CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
-  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
-  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
-  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
-  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
-  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+  CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
   void u8g_Delay(uint16_t val)		Delay by "val" milliseconds
   void u8g_MicroDelay(void)		Delay be one microsecond
   void u8g_10MicroDelay(void)	Delay by 10 microseconds
 
-  
+
 */
 
 
 #include "u8g.h"
+#ifdef HAVE_UNISTD_H
+# include <unistd.h> /* for usleep() */
+#endif /* HAVE_UNISTD_H */
 
 /*==== Part 1: Derive suitable delay procedure ====*/
 
 #if defined(ARDUINO)
 
-#  if ARDUINO < 100 
-#    include <WProgram.h> 
-#  else 
-#    include <Arduino.h> 
+#  if ARDUINO < 100
+#    include <WProgram.h>
+#  else
+#    include <Arduino.h>
 #  endif
 
 /* issue 353 */
@@ -142,13 +145,13 @@ void u8g_10MicroDelay(void)
   Delay by the provided number of milliseconds.
   Thus, a 16 bit value will allow a delay of 0..65 seconds
   Makes use of the _delay_loop_2
-  
+
   _delay_loop_2 will do a delay of n * 4 prozessor cycles.
   with f = F_CPU cycles per second,
   n = f / (1000 * 4 )
   with f = 16000000 the result is 4000
   with f = 1000000 the result is 250
-  
+
   the millisec loop, gcc requires the following overhead:
   - movev 1
   - subwi 2x2
@@ -169,7 +172,7 @@ void u8g_Delay(uint16_t val)
 /* delay by one micro second */
 void u8g_MicroDelay(void)
 {
-#if (F_CPU / 4000000 ) > 0 
+#if (F_CPU / 4000000 ) > 0
   _delay_loop_2( (F_CPU / 4000000 ) );
 #endif
 }
@@ -177,12 +180,12 @@ void u8g_MicroDelay(void)
 /* delay by 10 micro seconds */
 void u8g_10MicroDelay(void)
 {
-#if (F_CPU / 400000 ) > 0 
+#if (F_CPU / 400000 ) > 0
   _delay_loop_2( (F_CPU / 400000 ) );
 #endif
 }
 
-#endif 
+#endif
 
 
 /*== Delay for PIC18 (not tested) ==*/
@@ -195,7 +198,7 @@ void u8g_10MicroDelay(void)
 void u8g_Delay(uint16_t val)
 {/*
 	unsigned int _iTemp = (val);
-	while(_iTemp--)		
+	while(_iTemp--)
 		Delay1KTCYx((GetInstructionClock()+999999)/1000000);
 		*/
 }
@@ -231,7 +234,7 @@ void u8g_10MicroDelay(void)
 #endif
 
 #if defined(USE_PIC32_DELAY)
-/* 
+/*
   Assume chipkit here with F_CPU correctly defined
   The problem was, that u8g_Delay() is called within the constructor.
   It seems that the chipkit is not fully setup at this time, so a
@@ -250,7 +253,7 @@ void u8g_Delay(uint16_t val)
 	s = ReadCoreTimer();
 	while ( (uint32_t)(ReadCoreTimer() - s) < d )
 		;
-} 
+}
 
 void u8g_MicroDelay(void)
 {
@@ -260,7 +263,7 @@ void u8g_MicroDelay(void)
 	s = ReadCoreTimer();
 	while ( (uint32_t)(ReadCoreTimer() - s) < d )
 		;
-} 
+}
 
 void u8g_10MicroDelay(void)
 {
@@ -270,7 +273,7 @@ void u8g_10MicroDelay(void)
 	s = ReadCoreTimer();
 	while ( (uint32_t)(ReadCoreTimer() - s) < d )
 		;
-} 
+}
 
 #endif
 
@@ -304,7 +307,7 @@ void u8g_10MicroDelay(void)
   #include <project.h>
   void u8g_Delay(uint16_t val)  {CyDelay(val);};
   void u8g_MicroDelay(void)     {CyDelay(1);};
-  void u8g_10MicroDelay(void)   {CyDelay(10);};  
+  void u8g_10MicroDelay(void)   {CyDelay(10);};
 #endif
 
 

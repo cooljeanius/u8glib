@@ -1,7 +1,7 @@
 /*
 
   spacetrash.c
-  
+
   Port to the dogm128 API of the u8g library
 
   A game, which should runs on all displays.
@@ -9,47 +9,49 @@
   Copyright (c) 2012, olikraus@gmail.com
   All rights reserved.
 
-  Redistribution and use in source and binary forms, with or without modification, 
+  Redistribution and use in source and binary forms, with or without modification,
   are permitted provided that the following conditions are met:
 
-  * Redistributions of source code must retain the above copyright notice, this list 
+  * Redistributions of source code must retain the above copyright notice, this list
     of conditions and the following disclaimer.
-    
-  * Redistributions in binary form must reproduce the above copyright notice, this 
-    list of conditions and the following disclaimer in the documentation and/or other 
+
+  * Redistributions in binary form must reproduce the above copyright notice, this
+    list of conditions and the following disclaimer in the documentation and/or other
     materials provided with the distribution.
 
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
-  CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
-  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
-  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
-  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
-  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
-  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
-  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
-  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+  CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
 #include "u8g.h"
-
+#ifdef HAVE_STDLIB_H
+# include <stdlib.h> /* for rand() */
+#endif /* HAVE_STDLIB_H */
 
 #define ST_FP 4
 
 /* object types */
 struct _st_ot_struct
 {
-  /* 
-    missle and hit: 
+  /*
+    missle and hit:
       bit 0: player missle and trash
       bit 1: trash, which might hit the player
   */
-  
-  uint8_t missle_mask;		/* this object is a missle: it might destroy something if the target is_hit_fn says so */ 
+
+  uint8_t missle_mask;		/* this object is a missle: it might destroy something if the target is_hit_fn says so */
   uint8_t hit_mask;			/* if missle_mask & hit_mask is != 0  then the object can be destroyed */
   uint8_t points;
   uint8_t draw_fn;
@@ -61,7 +63,7 @@ struct _st_ot_struct
       /* ST_IS_HIT_FN_NONE, ST_IS_HIT_BBOX */
   uint8_t fire_fn;
     /* ST_FIRE_FN_NONE, ST_FIRE_FN_X_LEFT */
-  
+
 };
 typedef struct _st_ot_struct st_ot;
 
@@ -190,7 +192,7 @@ st_ot st_object_types[] U8G_PROGMEM =
     { 0, 0,  0, ST_DRAW_BACKSLASH, ST_MOVE_NXPY, ST_DESTROY_NONE, ST_IS_HIT_NONE, ST_FIRE_NONE },
     /* ST_OT_DUST_NXNY (15): Last part of trash  */
     { 0, 0,  0, ST_DRAW_SLASH, ST_MOVE_NXNY, ST_DESTROY_NONE, ST_IS_HIT_NONE, ST_FIRE_NONE },
-    
+
 };
 
 /*================================================================*/
@@ -199,11 +201,11 @@ st_ot st_object_types[] U8G_PROGMEM =
 
 /* use AVR RAMEND constant to derive the number of allowed objects */
 
-#if RAMEND < 0x300 
+#if RAMEND < 0x300
 #define ST_OBJ_CNT 25
 #else
 #define ST_OBJ_CNT 45
-#endif 
+#endif
 
 st_obj st_objects[ST_OBJ_CNT];
 
@@ -244,8 +246,8 @@ uint16_t st_to_diff_cnt = 0;
 /* bitmaps */
 /*================================================================*/
 
-const u8g_pgm_uint8_t st_bitmap_player1[] = 
-{ 
+const u8g_pgm_uint8_t st_bitmap_player1[] =
+{
   /* 01100000 */ 0x060,
   /* 11111000 */ 0x0f8,
   /* 01111110 */ 0x07e,
@@ -253,8 +255,8 @@ const u8g_pgm_uint8_t st_bitmap_player1[] =
   /* 01100000 */ 0x060
 };
 
-const u8g_pgm_uint8_t st_bitmap_player2[] = 
-{   
+const u8g_pgm_uint8_t st_bitmap_player2[] =
+{
   /* 01100000 */ 0x060,
   /* 01111100 */ 0x078,
   /* 01100000 */ 0x060,
@@ -265,8 +267,8 @@ const u8g_pgm_uint8_t st_bitmap_player2[] =
   /* 01100000 */ 0x060
 };
 
-const u8g_pgm_uint8_t st_bitmap_player3[] = 
-{   
+const u8g_pgm_uint8_t st_bitmap_player3[] =
+{
   /* 01100000 */ 0x060,
   /* 01111100 */ 0x078,
   /* 01100000 */ 0x060,
@@ -280,8 +282,8 @@ const u8g_pgm_uint8_t st_bitmap_player3[] =
   /* 01100000 */ 0x060
  };
 
-const u8g_pgm_uint8_t st_bitmap_trash_5x5_1[] = 
-{ 
+const u8g_pgm_uint8_t st_bitmap_trash_5x5_1[] =
+{
   /* 01110000 */ 0x070,
   /* 11110000 */ 0x0f0,
   /* 11111000 */ 0x0f8,
@@ -289,8 +291,8 @@ const u8g_pgm_uint8_t st_bitmap_trash_5x5_1[] =
   /* 00110000 */ 0x030,
 };
 
-const u8g_pgm_uint8_t st_bitmap_trash_5x5_2[] = 
-{ 
+const u8g_pgm_uint8_t st_bitmap_trash_5x5_2[] =
+{
   /* 00110000 */ 0x030,
   /* 11111000 */ 0x0f8,
   /* 11111000 */ 0x0f8,
@@ -298,7 +300,7 @@ const u8g_pgm_uint8_t st_bitmap_trash_5x5_2[] =
   /* 01110000 */ 0x070,
 };
 
-const u8g_pgm_uint8_t st_bitmap_trash_7x7[] = 
+const u8g_pgm_uint8_t st_bitmap_trash_7x7[] =
 {
   /* 00111000 */ 0x038,
   /* 01111100 */ 0x07c,
@@ -309,8 +311,8 @@ const u8g_pgm_uint8_t st_bitmap_trash_7x7[] =
   /* 01111000 */ 0x078,
 };
 
-const u8g_pgm_uint8_t st_bitmap_gadget[] = 
-{ 
+const u8g_pgm_uint8_t st_bitmap_gadget[] =
+{
   /* 01110000 */ 0x070,
   /* 11011000 */ 0x0d8,
   /* 10001000 */ 0x088,
@@ -338,7 +340,7 @@ void st_InitTrash(uint8_t x, uint8_t y, int8_t dir);
 void st_NewGadget(uint8_t x, uint8_t y);
 void st_NewPlayerMissle(uint8_t x, uint8_t y) ;
 void st_NewTrashDust(uint8_t x, uint8_t y, int ot);
-void st_NewTrashDustAreaArgs(int16_t x, int16_t y, int ot); 
+void st_NewTrashDustAreaArgs(int16_t x, int16_t y, int ot);
 void st_SetupPlayer(uint8_t objnr, uint8_t ot);
 
 
@@ -368,7 +370,7 @@ uint8_t st_rnd(void)
   return rand();
 }
 
-/*	
+/*
   for the specified index number, return the object
 */
 static st_obj *st_GetObj(uint8_t objnr)
@@ -379,7 +381,7 @@ static st_obj *st_GetObj(uint8_t objnr)
 
 /*
   check, if this is a missle-like object (that is, can this object destroy something else)
-*/ 
+*/
 uint8_t st_GetMissleMask(uint8_t objnr)
 {
   st_obj *o = st_GetObj(objnr);
@@ -388,7 +390,7 @@ uint8_t st_GetMissleMask(uint8_t objnr)
 
 /*
   check, if this is a missle-like object (that is, can this object destroy something else)
-*/ 
+*/
 uint8_t st_GetHitMask(uint8_t objnr)
 {
   st_obj *o = st_GetObj(objnr);
@@ -473,12 +475,12 @@ void st_SetXY(st_obj *o, uint8_t x, uint8_t y)
 /*
   calculate the object bounding box and place it into some global variables
 */
-int16_t st_bbox_x0, st_bbox_y0, st_bbox_x1, st_bbox_y1;  
+int16_t st_bbox_x0, st_bbox_y0, st_bbox_x1, st_bbox_y1;
 
 void st_CalcBBOX(uint8_t objnr)
 {
   st_obj *o = st_GetObj(objnr);
-  
+
   st_bbox_x0 = (uint16_t)(o->x>>ST_FP);
   st_bbox_x1 = st_bbox_x0;
   st_bbox_x0 += o->x0;
@@ -524,7 +526,7 @@ uint8_t st_ClipBBOX(void)
     st_cbbox_y1  = (uint16_t)st_bbox_y1;
   else
     st_cbbox_y1 = ST_AREA_HEIGHT-1;
-  
+
   return 1;
 }
 
@@ -628,13 +630,13 @@ void st_DrawBBOX(uint8_t objnr)
     return;
   /* st_cbbox_x0, st_cbbox_y0, st_cbbox_x1, st_cbbox_y1; */
 
-  
+
   // w = st_cbbox_x1-st_cbbox_x0;
   // w++;
   // h = st_cbbox_y1-st_cbbox_y0;
   // h++;
-  
-  
+
+
   //dog_SetVLine(st_cbbox_x0, st_cbbox_y0, st_cbbox_y1);
   //dog_SetVLine(st_cbbox_x1, st_cbbox_y0, st_cbbox_y1);
   //dog_SetHLine(st_cbbox_x0, st_cbbox_x1, st_cbbox_y0);
@@ -643,9 +645,9 @@ void st_DrawBBOX(uint8_t objnr)
   u8g_SetColorIndex(st_u8g, 1);
   y0 = u8g_height_minus_one - st_cbbox_y0;
   y1 = u8g_height_minus_one - st_cbbox_y1;
-  
+
   u8g_DrawFrame(st_u8g, st_cbbox_x0, y1, st_cbbox_x1-st_cbbox_x0+1, y0-y1+1);
-  
+
   //dog_SetBox(st_cbbox_x0, st_cbbox_y0, st_cbbox_x1, st_cbbox_y1);
 
   /*
@@ -674,9 +676,9 @@ void st_DrawBitmap(uint8_t objnr, const u8g_pgm_uint8_t * bm, uint8_t w, uint8_t
   st_CalcBBOX(objnr);
   /* result is here: int16_t st_bbox_x0, st_bbox_y0, st_bbox_x1, st_bbox_y1 */
   //dog_SetBitmapP(st_bbox_x0,st_bbox_y1,bm,w,h);
-  
+
   u8g_DrawBitmapP(st_u8g, st_bbox_x0, u8g_height_minus_one - st_bbox_y1, (w+7)/8, h, bm);
-  
+
  }
 
 void st_DrawObj(uint8_t objnr)
@@ -720,20 +722,20 @@ void st_DrawObj(uint8_t objnr)
 	x = st_CalcXY(o);
 	y = st_px_y;
 
-	
+
 	// dog_SetPixel(x,y);
 	// x++; y--;
 	// dog_SetPixel(x,y);
 	// x++; y--;
  	// dog_SetPixel(x,y);
-	
-	u8g_SetColorIndex(st_u8g, 1);  
-	u8g_DrawPixel(st_u8g, x, u8g_height_minus_one - y);  
+
+	u8g_SetColorIndex(st_u8g, 1);
+	u8g_DrawPixel(st_u8g, x, u8g_height_minus_one - y);
 	x++; y--;
-	u8g_DrawPixel(st_u8g, x, u8g_height_minus_one - y);  
+	u8g_DrawPixel(st_u8g, x, u8g_height_minus_one - y);
 	x++; y--;
-	u8g_DrawPixel(st_u8g, x, u8g_height_minus_one - y);  	
-     }      
+	u8g_DrawPixel(st_u8g, x, u8g_height_minus_one - y);
+     }
      break;
     case ST_DRAW_SLASH:
       {
@@ -741,20 +743,20 @@ void st_DrawObj(uint8_t objnr)
 	uint8_t y;
 	x = st_CalcXY(o);
 	y = st_px_y;
-	
+
 	// dog_SetPixel(x,y);
 	// x++; y++;
 	// dog_SetPixel(x,y);
 	// x++; y++;
  	// dog_SetPixel(x,y);
-	
-	u8g_SetColorIndex(st_u8g, 1);  
-	u8g_DrawPixel(st_u8g, x, u8g_height_minus_one - y);  
+
+	u8g_SetColorIndex(st_u8g, 1);
+	u8g_DrawPixel(st_u8g, x, u8g_height_minus_one - y);
 	x++; y++;
-	u8g_DrawPixel(st_u8g, x, u8g_height_minus_one - y);  
+	u8g_DrawPixel(st_u8g, x, u8g_height_minus_one - y);
 	x++; y++;
-	u8g_DrawPixel(st_u8g, x, u8g_height_minus_one - y);  	
-     }      
+	u8g_DrawPixel(st_u8g, x, u8g_height_minus_one - y);
+     }
      break;
   }
 }
@@ -762,7 +764,7 @@ void st_DrawObj(uint8_t objnr)
 uint8_t st_IsHitBBOX(uint8_t objnr, uint8_t x, uint8_t y)
 {
   st_CalcBBOX(objnr);
-  if ( st_ClipBBOX() == 0 ) 
+  if ( st_ClipBBOX() == 0 )
     return 0;	/* obj is outside (not visible) */
   if ( x < st_cbbox_x0 )
     return 0;
@@ -837,12 +839,12 @@ uint8_t st_IsHit(uint8_t objnr, uint8_t x, uint8_t y, uint8_t missle_mask)
 {
   uint8_t hit_mask = st_GetHitMask(objnr);
   st_obj *o;
-  
+
   if ( (hit_mask & missle_mask) == 0 )
     return 0;
-  
+
   o = st_GetObj(objnr);
-  
+
   switch(u8g_pgm_read(&(st_object_types[o->ot].is_hit_fn)))
   {
     case ST_IS_HIT_NONE:
@@ -921,12 +923,12 @@ void st_Fire(uint8_t objnr)
   st_obj *o = st_GetObj(objnr);
   uint8_t x;
   uint8_t y;
-  
+
   switch(u8g_pgm_read(&(st_object_types[o->ot].fire_fn)))
   {
-    case ST_FIRE_NONE: 
+    case ST_FIRE_NONE:
       break;
-    case ST_FIRE_PLAYER1: 
+    case ST_FIRE_PLAYER1:
       if ( st_fire_player == 0 )
       {
 	/* create missle at st_px_x and st_px_y */
@@ -1079,11 +1081,11 @@ void st_NewWall(void)
   o->x0 = 0;
   o->x1 = 5;
   o->x = (ST_AREA_WIDTH-1)<<ST_FP;
- 
+
   if ( (st_rnd() & 1) == 0 )
   {
     o->y = (ST_AREA_HEIGHT-1)<<ST_FP;
-    
+
     o->y0 = -h;
     o->y1 = 0;
   }
@@ -1159,20 +1161,20 @@ void st_InitDeltaWall(void)
   uint8_t cnt = 0;
   uint8_t max_x = 0;
   uint8_t max_l;
-  
+
   uint8_t min_dist_for_new = 40;
   uint8_t my_difficulty = st_difficulty;
-  
+
   if ( st_difficulty >= 2 )
   {
-    
+
     max_l = ST_AREA_WIDTH;
     max_l -= min_dist_for_new;
-    
+
     if ( my_difficulty > 30 )
       my_difficulty = 30;
     min_dist_for_new -= my_difficulty;
-    
+
     for( i = 0; i < ST_OBJ_CNT; i++ )
     {
       if ( st_objects[i].ot == ST_OT_WALL_SOLID )
@@ -1181,9 +1183,9 @@ void st_InitDeltaWall(void)
 	if ( max_x < (st_objects[i].x>>ST_FP) )
 	  max_x = (st_objects[i].x>>ST_FP);
       }
-    }    
+    }
     /* if ( cnt < upper_trash_limit ) */
-    if ( max_x < max_l ) 
+    if ( max_x < max_l )
     {
       st_NewWall();
     }
@@ -1197,15 +1199,15 @@ void st_InitDeltaTrash(void)
   uint8_t cnt = 0;
   uint8_t max_x = 0;
   uint8_t max_l;
-  
+
   uint8_t upper_trash_limit = ST_OBJ_CNT-7;
   uint8_t min_dist_for_new = 20;
   uint8_t my_difficulty = st_difficulty;
-  
+
   if ( my_difficulty > 14 )
     my_difficulty = 14;
   min_dist_for_new -= my_difficulty;
-  
+
   for( i = 0; i < ST_OBJ_CNT; i++ )
   {
     if ( st_objects[i].ot == ST_OT_TRASH1 || st_objects[i].ot == ST_OT_TRASH2 || st_objects[i].ot == ST_OT_GADGET  || st_objects[i].ot == ST_OT_BIG_TRASH )
@@ -1215,12 +1217,12 @@ void st_InitDeltaTrash(void)
 	max_x = (st_objects[i].x>>ST_FP);
     }
   }
-  
+
   max_l = ST_AREA_WIDTH;
   max_l -= min_dist_for_new;
-  
+
   if ( cnt < upper_trash_limit )
-    if ( max_x < max_l ) 
+    if ( max_x < max_l )
     {
       if (  (st_difficulty >= 3)  && ((st_rnd() & 7) == 0) )
 	st_NewGadget(ST_AREA_WIDTH-1, rand() & (ST_AREA_HEIGHT-1));
@@ -1252,12 +1254,12 @@ void st_DrawInGame(uint8_t fps)
   /* draw all objects */
   for( i = 0; i < ST_OBJ_CNT; i++ )
       st_DrawObj(i);
-  
+
   //dog_ClrBox(0, ST_AREA_HEIGHT, st_u8g->width-1, ST_AREA_HEIGHT+3);
 
   u8g_SetColorIndex(st_u8g, 0);
   u8g_DrawBox(st_u8g, 0, u8g_height_minus_one - ST_AREA_HEIGHT-3, st_u8g->width, 4);
-  
+
   u8g_SetColorIndex(st_u8g, 1);
   u8g_DrawHLine(st_u8g, 0, u8g_height_minus_one - ST_AREA_HEIGHT+1, ST_AREA_WIDTH);
   u8g_DrawHLine(st_u8g, 0, u8g_height_minus_one, ST_AREA_WIDTH);
@@ -1266,12 +1268,12 @@ void st_DrawInGame(uint8_t fps)
   u8g_DrawHLine(st_u8g, 10, u8g_height_minus_one - ST_AREA_HEIGHT-3, (st_to_diff_cnt>>ST_DIFF_FP)+1);
   u8g_DrawVLine(st_u8g, 10, u8g_height_minus_one - ST_AREA_HEIGHT-4, 3);
   u8g_DrawVLine(st_u8g, 10+ST_DIFF_VIS_LEN, u8g_height_minus_one - ST_AREA_HEIGHT-4, 3);
-  
-  
+
+
   /* player points */
   u8g_DrawStr(st_u8g, ST_AREA_WIDTH-5*4-2, u8g_height_minus_one - ST_AREA_HEIGHT, st_itoa(st_player_points_delayed));
-  
-  
+
+
   /* FPS output */
   if ( fps > 0 )
   {
@@ -1352,26 +1354,26 @@ void st_StepInGame(uint8_t player_pos, uint8_t is_auto_fire, uint8_t is_fire)
 {
   uint8_t i, j;
   uint8_t missle_mask;
-  
+
   /* rescale player pos */
   //st_player_pos = ((uint16_t)player_pos * (uint16_t)ST_AREA_HEIGHT)/256;
   if ( player_pos < 64 )
     st_player_pos = 0;
   else if ( player_pos >= 192 )
     st_player_pos = ST_AREA_HEIGHT-2-1;
-  else 
+  else
     st_player_pos = ((uint16_t)((player_pos-64)) * (uint16_t)(ST_AREA_HEIGHT-2))/128;
   st_player_pos+=1;
   /* move all objects */
   for( i = 0; i < ST_OBJ_CNT; i++ )
     st_Move(i);
-    
+
   /* check for objects which left the play area */
   for( i = 0; i < ST_OBJ_CNT; i++ )
     if ( st_objects[i].ot != 0 )
       if ( st_IsOut(i) != 0 )
 	st_Disappear(i);
-      
+
   /* missle and destruction handling */
   for( i = 0; i < ST_OBJ_CNT; i++ )
   {
@@ -1385,32 +1387,32 @@ void st_StepInGame(uint8_t player_pos, uint8_t is_auto_fire, uint8_t is_fire)
 	      st_Destroy(i);
 	    }
   }
-  
+
   /* handle fire counter */
   st_FireStep(is_auto_fire, is_fire);
-  
+
   /* fire */
   for( i = 0; i < ST_OBJ_CNT; i++ )
     st_Fire(i);
-	  
+
   /* create new objects */
   st_InitDelta();
-	
+
   /* increase difficulty */
-	    
+
   st_to_diff_cnt++;
   if ( st_to_diff_cnt == (ST_DIFF_VIS_LEN<<ST_DIFF_FP) )
   {
     st_to_diff_cnt = 0;
     st_difficulty++;
     st_player_points += ST_POINTS_PER_LEVEL;
-  }  
-  
+  }
+
   /* update visible player points */
   if ( st_player_points_delayed < st_player_points )
     st_player_points_delayed++;
 }
-  
+
 void st_Step(uint8_t player_pos, uint8_t is_auto_fire, uint8_t is_fire)
 {
   switch(st_state)

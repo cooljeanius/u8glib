@@ -1,0 +1,470 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="210.91104" version="1.2" xmlns="http://www.w3.org/2000/svg" height="114.93855" viewBox="0 0 210.91103 114.93855" xmlns:xml="http://www.w3.org/XML/1998/namespace" id="svg9198" xml:space="preserve">
+ <g id="breadboard">
+  <metadata id="metadata12138">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <cc:Work xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" rdf:about="">
+     <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">image/svg+xml</dc:format>
+     <dc:type xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" rdf:resource="http://purl.org/dc/dcmitype/StillImage" xmlns:dc="http://purl.org/dc/elements/1.1/"/>
+     <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/"/>
+    </cc:Work>
+   </rdf:RDF>
+  </metadata>
+  <defs id="defs12136"/>
+  <g style="display:inline" id="layer1" transform="translate(-180.51738,-290.90184)">
+   <g id="g5629" transform="translate(7.7889549,14.169269)">
+    <rect width="210.91104" x="172.72842" y="276.73257" height="114.93855" style="fill:#00a63d;fill-opacity:1;stroke:none" id="rect5722"/>
+    <g id="g5208" transform="translate(-2.43924,-0.90447112)">
+     <g id="g5472">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.26645" y="196.29729" id="tspan4742">01:GND</text>
+     </g>
+    </g>
+    <g id="g5215" transform="translate(-0.58992028,-0.93550029)">
+     <g style="display:inline" id="g5472-6" transform="translate(7.1797482,0.02968395)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-4" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-5" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.15912" y="203.50264" id="tspan4742-4">02:VDD</text>
+     </g>
+    </g>
+    <g id="g5222" transform="translate(1.1773135,-0.95138546)">
+     <g style="display:inline" id="g5472-5" transform="translate(14.383446,0.0442239)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-3" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-8" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.1568" y="210.74313" id="tspan4742-4-8">03:NC</text>
+     </g>
+    </g>
+    <g id="g5229" transform="translate(2.9561323,-0.93963485)">
+     <g style="display:inline" id="g5472-6-6" transform="translate(21.604627,0.03247329)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-4-7" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-5-3" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.23962" y="217.86922" id="tspan4742-4-8-2">04:D/C</text>
+     </g>
+    </g>
+    <g id="g5236" transform="translate(4.7962251,-0.90925577)">
+     <g style="display:inline" id="g5472-4" transform="translate(28.764534,0.00209421)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-9" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-4" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.1568" y="225.16098" id="tspan4742-4-8-2-2">05:R/W</text>
+     </g>
+    </g>
+    <g id="g5243" transform="translate(6.645543,-0.93759055)">
+     <g style="display:inline" id="g5472-6-68" transform="translate(35.944284,0.03177421)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-4-3" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-5-2" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.15677" y="232.28705" id="tspan4742-4-8-2-2-9">06:E</text>
+     </g>
+    </g>
+    <g id="g5250" transform="translate(8.3837064,-0.95213055)">
+     <g style="display:inline" id="g5472-5-3" transform="translate(43.147984,0.04631421)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-3-6" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-8-2" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9-6" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.15677" y="239.57884" id="tspan4742-4-8-2-2-9-0">07:DB0/SCLK</text>
+     </g>
+    </g>
+    <g id="g5257" transform="translate(10.162526,-0.94038055)">
+     <g style="display:inline" id="g5472-6-6-2" transform="translate(50.369164,0.03456421)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-4-7-4" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-5-3-7" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9-5" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.21423" y="246.70491" id="tspan4742-4-8-2-2-9-5">08:DB1/SDIN</text>
+     </g>
+    </g>
+    <g id="g5264" transform="translate(11.944468,-0.93067014)">
+     <g style="display:inline" id="g5472-5-3-2" transform="translate(57.61629,0.02350858)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-3-6-1" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-8-2-0" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9-5-2" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.21423" y="254.07954" id="tspan4742-4-8-2-2-9-5-9">09:DB2/NC</text>
+     </g>
+    </g>
+    <g id="g5271" transform="translate(13.69422,-0.91757492)">
+     <g style="display:inline" id="g5472-6-6-2-8" transform="translate(64.83747,0.01175858)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-4-7-4-9" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-5-3-7-0" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9-5-2-0" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.2142" y="261.20563" id="tspan4742-4-8-2-2-9-5-9-2">10:DB3</text>
+     </g>
+    </g>
+    <g id="g5278" transform="translate(15.56102,-0.88553653)">
+     <g style="display:inline" id="g5472-1" transform="translate(71.97067,-0.02027981)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-0" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-57" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9-5-2-0-8" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.13135" y="268.3317" id="tspan4742-4-8-2-2-9-5-9-2-3">11:DB4</text>
+     </g>
+    </g>
+    <g id="g5285" transform="translate(17.381269,-0.91521653)">
+     <g style="display:inline" id="g5472-6-4" transform="translate(79.15042,0.00940019)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-4-2" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-5-0" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9-5-2-4" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.16519" y="275.54309" id="tspan4742-4-8-2-2-9-5-9-3">12:DB5</text>
+     </g>
+    </g>
+    <g id="g5292" transform="translate(19.202501,-0.91212052)">
+     <g style="display:inline" id="g5472-5-0" transform="translate(86.35412,0.02394019)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-3-3" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-8-3" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9-5-2-0-5" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.16516" y="282.66919" id="tspan4742-4-8-2-2-9-5-9-2-1">13:DB6</text>
+     </g>
+    </g>
+    <g id="g5299" transform="translate(20.956389,-0.91800653)">
+     <g style="display:inline" id="g5472-6-6-9" transform="translate(93.5753,0.01219019)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-4-7-0" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-5-3-4" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9-5-2-0-8-7" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.08231" y="289.79526" id="tspan4742-4-8-2-2-9-5-9-2-3-4">14:DB7</text>
+     </g>
+    </g>
+    <g id="g5306" transform="translate(22.821421,-0.87000052)">
+     <g style="display:inline" id="g5472-4-3" transform="translate(100.7352,-0.01817981)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-9-3" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-4-4" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9-5-2-3" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.16519" y="297.29291" id="tspan4742-4-8-2-2-9-5-9-38">15:NC</text>
+     </g>
+    </g>
+    <g id="g5313" transform="translate(24.616738,-0.91731653)">
+     <g style="display:inline" id="g5472-6-68-2" transform="translate(107.91495,0.01150019)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-4-3-4" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-5-2-5" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9-5-2-0-0" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.16516" y="304.41901" id="tspan4742-4-8-2-2-9-5-9-2-4">16:/RES</text>
+     </g>
+    </g>
+    <g id="g5320" transform="translate(26.413038,-0.93185653)">
+     <g style="display:inline" id="g5472-5-3-3" transform="translate(115.11865,0.02604019)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-3-6-8" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-8-2-1" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9-5-2-0-8-76" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.08231" y="311.54507" id="tspan4742-4-8-2-2-9-5-9-2-3-8">17:/CS</text>
+     </g>
+    </g>
+    <g id="g5327" transform="translate(28.21679,-0.90247052)">
+     <g style="display:inline" id="g5472-6-6-2-1" transform="translate(122.33983,0.01429019)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-4-7-4-3" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-5-3-7-1" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9-5-2-4-9" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.11615" y="318.75647" id="tspan4742-4-8-2-2-9-5-9-3-0">18:NC</text>
+     </g>
+    </g>
+    <g id="g5334" transform="translate(29.944728,-0.90904653)">
+     <g style="display:inline" id="g5472-5-3-2-5" transform="translate(129.58696,0.00323019)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-3-6-1-8" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-8-2-0-1" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9-5-2-0-5-6" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.11612" y="325.88257" id="tspan4742-4-8-2-2-9-5-9-2-1-8">19:BS2</text>
+     </g>
+    </g>
+    <g id="g5341" transform="translate(31.723548,-0.89729653)">
+     <g style="display:inline" id="g5472-6-6-2-8-3" transform="translate(136.80814,-0.00851981)">
+      <path style="fill:#9a916c;fill-opacity:1;fill-rule:evenodd;stroke:none" id="path12160-4-7-4-9-3" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(1.0318697,0,0,1.0478046,-6.1954768,-18.562026)"/>
+      <path style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline" id="path12160-2-5-3-7-0-9" d="m 196.99999,388.29001 a 2.5999999,2.6000001 0 1 1 -5.2,0 2.5999999,2.6000001 0 1 1 5.2,0 z" transform="matrix(0.35733392,0,0,0.34667121,124.913,253.6987)"/>
+     </g>
+     <g style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;display:inline;font-family:OCRA;-inkscape-font-specification:OCRA" id="text4740-8-9-7-8-9-5-2-0-8-7-7" xml:space="preserve" transform="matrix(0,-1,1,0,0,0)">
+      <text x="-385.03326" y="333.00864" id="tspan4742-4-8-2-2-9-5-9-2-3-4-9">20:BS1</text>
+     </g>
+    </g>
+    <rect width="194.16867" x="180.50543" y="279.89853" height="64.685074" style="fill:#b3b3b3;fill-opacity:1;stroke:none" id="rect4780"/>
+    <rect width="193.71358" x="180.06987" y="280.4241" height="64.296791" style="fill:#1a1a1a;fill-opacity:1;stroke:none" id="rect4784"/>
+    <path style="fill:#cccccc;stroke:#666666;stroke-width:0.45891556px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" id="path4786" d="m 185.19721,283.57095 183.74928,0"/>
+    <rect width="177.29471" x="188.49318" y="289.72278" height="52.143791" style="fill:#000000;fill-opacity:1;stroke:none" id="rect5556"/>
+    <g style="font-size:5.41264725px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#e6e6e6;fill-opacity:1;stroke:none;font-family:OCRA;-inkscape-font-specification:OCRA" id="text5558" xml:space="preserve" transform="scale(1.0825886,0.92371189)">
+     <text x="182.10519" y="326.84344" id="tspan5560">NHD-2.7-12864UCY3</text>
+    </g>
+    <path style="fill:#000000;fill-opacity:1;stroke:none" id="path5564" d="m 187.142,384.69873 a 3.5740957,3.5740957 0 1 1 -7.14819,0 3.5740957,3.5740957 0 1 1 7.14819,0 z" transform="matrix(0.80327869,0,0,0.80327869,29.012294,78.381558)"/>
+    <path style="fill:#000000;fill-opacity:1;stroke:none;display:inline" id="path5564-3" d="m 187.142,384.69873 a 3.5740957,3.5740957 0 1 1 -7.14819,0 3.5740957,3.5740957 0 1 1 7.14819,0 z" transform="matrix(0.80327869,0,0,0.80327869,231.51229,78.381558)"/>
+    <path style="fill:#000000;fill-opacity:1;stroke:none;display:inline" id="path5564-3-9" d="m 187.142,384.69873 a 3.5740957,3.5740957 0 1 1 -7.14819,0 3.5740957,3.5740957 0 1 1 7.14819,0 z" transform="matrix(0.80327869,0,0,0.80327869,231.51229,-27.818439)"/>
+    <path style="fill:#000000;fill-opacity:1;stroke:none;display:inline" id="path5564-3-2" d="m 187.142,384.69873 a 3.5740957,3.5740957 0 1 1 -7.14819,0 3.5740957,3.5740957 0 1 1 7.14819,0 z" transform="matrix(0.80327869,0,0,0.80327869,28.904925,-28.204725)"/>
+   </g>
+  </g>
+  <rect width="4,999999762933225" x="151,6646195548694" y="108,1065382867133" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="79,73127999466936" y="107,9037359958901" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="160,5134891377683" y="108,1065382867133" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="88,58014957756826" y="108,1177029057781" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="169,9596009457547" y="107,9111790752667" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="97,8234591043469" y="108,0916521279601" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="178,5907820893985" y="108,1065382867133" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="187,6387324139932" y="108,3056190378482" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="16,63564539883266" y="108,2981759584716" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="25,68731726293913" y="108,3093405775365" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="106,6611640687102" y="108,1065382867133" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="34,72410296899832" y="108,1102598264016" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="43,56552947287354" y="108,3130621172248" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="115,6979497747695" y="107,9111790752667" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="52,60975825795638" y="108,3093405775365" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="124,5393762786446" y="108,1214244454664" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="133,5761619847038" y="108,3056190378482" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="61,64654396401554" y="108,3018974981599" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="70,49169200740259" y="108,102816747025" fill="none" height="5"/>
+  <rect width="4,999999762933225" x="142,6241123092984" y="108,102816747025" fill="none" height="5"/>
+  <rect width="0,002" x="145,1689029315342" y="110,5" fill="none" height="0,002" id="connector14terminal"/>
+  <rect width="0,002" x="73,16890293153419" y="110,7337805973912" fill="none" height="0,002"/>
+  <rect width="0,002" x="63,93512234522738" y="110,7337805973912" fill="none" height="0,002"/>
+  <rect width="0,002" x="136,402683517841" y="110,7337805973912" fill="none" height="0,002" id="connector13terminal"/>
+  <rect width="0,002" x="127,1689029315342" y="110,5" fill="none" height="0,002" id="connector12terminal"/>
+  <rect width="0,002" x="54,70134175892054" y="110,7337805973912" fill="none" height="0,002"/>
+  <rect width="0,002" x="118,1689029315342" y="110,6689029869559" fill="none" height="0,002" id="connector11terminal"/>
+  <rect width="0,002" x="45,70134175892052" y="110,5" fill="none" height="0,002"/>
+  <rect width="0,002" x="36,93512234522738" y="110,5" fill="none" height="0,002"/>
+  <rect width="0,002" x="109,1689029315342" y="110,7337805973912" fill="none" height="0,002" id="connector10terminal"/>
+  <rect width="0,002" x="27,93512234522735" y="110,7337805973912" fill="none" height="0,002"/>
+  <rect width="0,002" x="18,93512234522735" y="110,7337805973912" fill="none" height="0,002"/>
+  <rect width="0,002" x="190,1689029315342" y="110,5" fill="none" height="0,002" id="connector19terminal"/>
+  <rect width="0,002" x="181,1689029315342" y="110,7337805973912" fill="none" height="0,002" id="connector18terminal"/>
+  <rect width="0,002" x="100,2448217821341" y="110,5" fill="none" height="0,002" id="connector9terminal"/>
+  <rect width="0,002" x="172,1689029315342" y="110,6689029869559" fill="none" height="0,002" id="connector17terminal"/>
+  <rect width="0,002" x="91,16890293153422" y="110,5" fill="none" height="0,002" id="connector8terminal"/>
+  <rect width="0,002" x="163,1689029315342" y="110,9675611947823" fill="none" height="0,002" id="connector16terminal"/>
+  <rect width="0,002" x="81,82988118808935" y="110,7448218411552" fill="none" height="0,002"/>
+  <rect width="0,002" x="153,9351223452273" y="110,7337805973912" fill="none" height="0,002"/>
+  <rect width="4,000000000000005" x="151,9351223452273" y="108,2337805973912" fill="none" height="5"/>
+  <rect width="4,000000000000005" x="79,82988118808935" y="108,2448218411552" fill="none" height="5"/>
+  <rect width="4,000000000000005" x="161,1689029315342" y="108,4675611947823" fill="none" height="5" id="connector16pin"/>
+  <rect width="4,000000000000005" x="89,16890293153422" y="108" fill="none" height="5" id="connector8pin"/>
+  <rect width="4,000000000000005" x="170,1689029315342" y="108,1689029869559" fill="none" height="5" id="connector17pin"/>
+  <rect width="4,000000000000005" x="98,24482178213407" y="108" fill="none" height="5" id="connector9pin"/>
+  <rect width="4,000000000000005" x="179,1689029315342" y="108,2337805973912" fill="none" height="5" id="connector18pin"/>
+  <rect width="4,000000000000005" x="188,1689029315342" y="108" fill="none" height="5" id="connector19pin"/>
+  <rect width="3,999999999999998" x="16,93512234522735" y="108,2337805973912" fill="none" height="5"/>
+  <rect width="3,999999999999998" x="25,93512234522735" y="108,2337805973912" fill="none" height="5"/>
+  <rect width="4,000000000000005" x="107,1689029315342" y="108,2337805973912" fill="none" height="5" id="connector10pin"/>
+  <rect width="3,999999999999998" x="34,93512234522738" y="108" fill="none" height="5"/>
+  <rect width="3,999999999999998" x="43,70134175892051" y="108" fill="none" height="5"/>
+  <rect width="4,000000000000005" x="116,1689029315342" y="108,1689029869559" fill="none" height="5" id="connector11pin"/>
+  <rect width="3,999999999999998" x="52,70134175892054" y="108,2337805973912" fill="none" height="5"/>
+  <rect width="4,000000000000005" x="125,1689029315342" y="108" fill="none" height="5" id="connector12pin"/>
+  <rect width="3,999999999999998" x="61,93512234522738" y="108,2337805973912" fill="none" height="5"/>
+  <rect width="4,000000000000005" x="134,402683517841" y="108,2337805973912" fill="none" height="5" id="connector13pin"/>
+  <rect width="4,000000000000005" x="71,16890293153418" y="108,2337805973912" fill="none" height="5"/>
+  <rect width="4,000000000000005" x="143,1689029315342" y="108" fill="none" height="5" id="connector14pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+  <rect width="6,348582267444468" x="43,14869099341571" y="107,9737869411078" fill="none" height="5,323595059823532" id="connector3pin"/>
+  <rect width="6,446934480676719" x="151" y="108,1224779415735" fill="none" height="5,026213058892182" id="connector15pin"/>
+  <rect width="5,345978816296649" x="52,58849570427726" y="108" fill="none" height="5,526576744186031" id="connector4pin"/>
+  <rect width="6,637574457578636" x="60,85130900658427" y="108,1224779415735" fill="none" height="5,323595059823532" id="connector5pin"/>
+  <rect width="5,559034062522151" x="70,55392701975282" y="108,1224779415734" fill="none" height="5,174904059357885" id="connector6pin"/>
+  <rect width="5,737038700387053" x="79,29738198683144" y="108,1224779415735" fill="none" height="5,174904059357885" id="connector7pin"/>
+  <rect width="5,055493776134675" x="16,78525470940061" y="108" fill="none" height="5,475353958337365" id="connector0pin"/>
+  <rect width="6,096330730044712" x="25,11195034068124" y="108,2711689420391" fill="none" height="5,055494015832608" id="connector1pin"/>
+  <rect width="5,981049682253744" x="34" y="108,2711689420392" fill="none" height="5,026213058892182" id="connector2pin"/>
+ </g>
+</svg>
