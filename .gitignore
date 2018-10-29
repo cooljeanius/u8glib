@@ -42,3 +42,4 @@ u8gsdl_menu
 u8gsdl_polygon
 u8gsdl_spacetrash
 u8gsdl_xbm
+*.dSYM

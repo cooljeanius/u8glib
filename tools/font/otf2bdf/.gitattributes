@@ -1,0 +1,2 @@
+# Tell GitHub to ignore when calculating language stats:
+mkinstalldirs linguist-vendored
