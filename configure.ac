@@ -6,6 +6,7 @@ AC_INIT([u8glib],[1.18],[BUG-REPORT-ADDRESS])
 AC_CONFIG_SRCDIR([csrc/u8g_font.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIRS([m4])
+AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE([-Wall subdir-objects])
 AM_MAINTAINER_MODE
 
@@ -17,6 +18,7 @@ SED=sed
 AC_DEFUN([AC_REQUIRE_PROGS],[
   AC_REQUIRE([AC_PROG_AWK])dnl
   AC_REQUIRE([AC_PROG_MAKE_SET])dnl
+  AC_REQUIRE([AC_USE_SYSTEM_EXTENSIONS])dnl
   AC_REQUIRE([AC_PROG_CC])dnl
   m4_ifdef([AM_PROG_CC_C_O],[
     AC_REQUIRE([AM_PROG_CC_C_O])dnl
@@ -31,6 +33,7 @@ AM_PROG_AR
 AM_PROG_AS
 AC_PROG_INSTALL
 AC_PROG_LN_S
+AC_PATH_PROG([SDL_CONFIG],[sdl-config],[false])dnl
 
 # Checks for libraries.
 LT_PREREQ([2.2])
@@ -42,7 +45,7 @@ AC_ARG_ENABLE([debug],
                         [Compile the debug version (default: disabled)])],
 	[enable_debug=${enableval}],
 	[enable_debug=no])
-AM_CONDITIONAL([DEBUG],[test $enable_debug = "yes"])
+AM_CONDITIONAL([DEBUG],[test "x${enable_debug}" = "yes"])
 if test "x${enable_debug}" = "xyes"; then
   dnl# Have to do "changequote" because of how sed is called here:
   changequote({,})
@@ -59,6 +62,23 @@ else
   CFLAGS=`echo "${CFLAGS}" | ${SED} -e 's/-g//g'`
   CXXFLAGS=`echo "${CXXFLAGS}" | ${SED} -e 's/-g//g'`
 fi
+
+if test "x${LFS_CFLAGS}" = "x"; then
+  test -z "${LFS_CFLAGS}" && export LFS_CFLAGS="`getconf LFS_CFLAGS 2>/dev/null`"
+fi
+if test "x${LFS64_CFLAGS}" = "x"; then
+  test -z "${LFS64_CFLAGS}" && export LFS64_CFLAGS="`getconf LFS64_CFLAGS 2>/dev/null`"
+fi
+if test "x${LFS_LDFLAGS}" = "x"; then
+  test -z "${LFS_LDFLAGS}" && export LFS_LDFLAGS="`getconf LFS_LDFLAGS 2>/dev/null`"
+fi
+if test "x${LFS64_LDFLAGS}" = "x"; then
+  test -z "${LFS64_LDFLAGS}" && export LFS64_LDFLAGS="`getconf LFS64_LDFLAGS 2>/dev/null`"
+fi
+AC_SUBST([LFS_CFLAGS])dnl
+AC_SUBST([LFS64_CFLAGS])dnl
+AC_SUBST([LFS_LDFLAGS])dnl
+AC_SUBST([LFS64_LDFLAGS])dnl
 
 # Checks for libraries.
 AC_CHECK_LIB([c],[strerror])dnl

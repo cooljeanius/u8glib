@@ -90,6 +90,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
+target_triplet = @target@
 
 # use "valgrind --tool=memcheck --leak-check=yes" to check memory leak, MemWatch will drag the program.
 #DEFS+=-DMEMWATCH
@@ -1013,8 +1014,8 @@ CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@ -Icsrc -Icppsrc -Idogmsrc -Inonarduino \
 	-I$(top_srcdir)/csrc -I$(top_srcdir)/cppsrc \
-	-I$(top_srcdir)/dogmsrc -I$(top_srcdir)/nonarduino `getconf \
-	LFS_CFLAGS` `getconf LFS64_CFLAGS` -D_GNU_SOURCE \
+	-I$(top_srcdir)/dogmsrc -I$(top_srcdir)/nonarduino \
+	@LFS_CFLAGS@ @LFS64_CFLAGS@ -D_GNU_SOURCE \
 	-D_FILE_OFFSET_BITS=64 $(NULL) $(am__append_1) $(EXT_FLAGS)
 DEPDIR = @DEPDIR@
 DLLTOOL = @DLLTOOL@
@@ -1034,6 +1035,10 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
+LFS64_CFLAGS = @LFS64_CFLAGS@
+LFS64_LDFLAGS = @LFS64_LDFLAGS@
+LFS_CFLAGS = @LFS_CFLAGS@
+LFS_LDFLAGS = @LFS_LDFLAGS@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
@@ -1061,6 +1066,7 @@ PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 RANLIB = @RANLIB@
+SDL_CONFIG = @SDL_CONFIG@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
@@ -1116,13 +1122,17 @@ sharedstatedir = @sharedstatedir@
 srcdir = @srcdir@
 subdirs = @subdirs@
 sysconfdir = @sysconfdir@
+target = @target@
 target_alias = @target_alias@
+target_cpu = @target_cpu@
+target_os = @target_os@
+target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = -I m4
-AM_LDFLAGS = -L$(top_builddir)/ -L$(top_srcdir)/ `getconf LFS_LDFLAGS` \
-	`getconf LFS64_LDFLAGS` $(NULL)
+AM_LDFLAGS = -L$(top_builddir)/ -L$(top_srcdir)/ @LFS_LDFLAGS@ \
+	@LFS64_LDFLAGS@ $(NULL)
 AM_CFLAGS = -I$(top_builddir)/include/ -I$(top_srcdir)/include/ \
 	$(NULL) $(am__append_2) $(am__append_3)
 CLEANFILES = main.i main.s
@@ -1285,12 +1295,12 @@ lib_LTLIBRARIES = libu8gbase.la libu8gsdl.la libu8gwpi.la
 libu8gbase_la_SOURCES = $(SRC_BASE)
 libu8gsdl_la_SOURCES = $(SRC_SDL)
 libu8gwpi_la_SOURCES = $(SRC_WPI)
-libu8gbase_la_CFLAGS = -Icsrc -Icppsrc -Inonarduino -DU8G_16BIT `sdl-config --cflags`
+libu8gbase_la_CFLAGS = -Icsrc -Icppsrc -Inonarduino -DU8G_16BIT `$(SDL_CONFIG) --cflags`
 libu8gbase_la_CPPFLAGS = $(libu8gbase_la_CFLAGS)
 libu8gbase_la_LDFLAGS = 
-libu8gsdl_la_CFLAGS = -Icsrc -Icppsrc -Inonarduino -DU8G_16BIT `sdl-config --cflags`
+libu8gsdl_la_CFLAGS = -Icsrc -Icppsrc -Inonarduino -DU8G_16BIT `$(SDL_CONFIG) --cflags`
 libu8gsdl_la_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
-libu8gsdl_la_LDFLAGS = `sdl-config --libs`
+libu8gsdl_la_LDFLAGS = `$(SDL_CONFIG) --libs`
 libu8gsdl_la_LIBADD = $(top_builddir)/libu8gbase.la
 libu8gwpi_la_CFLAGS = -Icsrc -Icppsrc -Inonarduino -DU8G_16BIT -DU8G_RASPBERRY_PI -DU8G_WITH_PINLIST
 libu8gwpi_la_CPPFLAGS = $(libu8gwpi_la_CFLAGS)
@@ -1351,7 +1361,7 @@ u8gsdl_fonttop_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
 u8gsdl_fonttop_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 EXTRA_u8gsdl_fonttop_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 u8gsdl_fullcolor_SOURCES = sys/sdl/fullcolor/main.c
-u8gsdl_fullcolor_CPPFLAGS = $(libu8gsdl_la_CFLAGS) -save-temps
+u8gsdl_fullcolor_CPPFLAGS = $(libu8gsdl_la_CFLAGS)
 u8gsdl_fullcolor_LDFLAGS = $(libu8gsdl_la_LDFLAGS)
 u8gsdl_fullcolor_LDADD = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 EXTRA_u8gsdl_fullcolor_DEPENDENCIES = $(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la

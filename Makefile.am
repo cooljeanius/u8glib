@@ -10,8 +10,8 @@ DEFS+= \
     -Icsrc -Icppsrc -Idogmsrc -Inonarduino \
     -I$(top_srcdir)/csrc -I$(top_srcdir)/cppsrc -I$(top_srcdir)/dogmsrc \
     -I$(top_srcdir)/nonarduino \
-    `getconf LFS_CFLAGS` \
-    `getconf LFS64_CFLAGS` \
+    @LFS_CFLAGS@ \
+    @LFS64_CFLAGS@ \
     -D_GNU_SOURCE \
     -D_FILE_OFFSET_BITS=64 \
     $(NULL)
@@ -24,8 +24,8 @@ AM_CFLAGS+= \
 AM_LDFLAGS += \
     -L$(top_builddir)/ \
     -L$(top_srcdir)/ \
-    `getconf LFS_LDFLAGS` \
-    `getconf LFS64_LDFLAGS` \
+    @LFS_LDFLAGS@ \
+    @LFS64_LDFLAGS@ \
     $(NULL)
 
 if DEBUG
@@ -213,13 +213,13 @@ libu8gsdl_la_SOURCES=$(SRC_SDL)
 
 libu8gwpi_la_SOURCES=$(SRC_WPI)
 
-libu8gbase_la_CFLAGS=-Icsrc -Icppsrc -Inonarduino -DU8G_16BIT `sdl-config --cflags`
+libu8gbase_la_CFLAGS=-Icsrc -Icppsrc -Inonarduino -DU8G_16BIT `$(SDL_CONFIG) --cflags`
 libu8gbase_la_CPPFLAGS=$(libu8gbase_la_CFLAGS)
 libu8gbase_la_LDFLAGS=
 
-libu8gsdl_la_CFLAGS=-Icsrc -Icppsrc -Inonarduino -DU8G_16BIT `sdl-config --cflags`
+libu8gsdl_la_CFLAGS=-Icsrc -Icppsrc -Inonarduino -DU8G_16BIT `$(SDL_CONFIG) --cflags`
 libu8gsdl_la_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
-libu8gsdl_la_LDFLAGS=`sdl-config --libs`
+libu8gsdl_la_LDFLAGS=`$(SDL_CONFIG) --libs`
 libu8gsdl_la_LIBADD=$(top_builddir)/libu8gbase.la
 
 libu8gwpi_la_CFLAGS=-Icsrc -Icppsrc -Inonarduino -DU8G_16BIT -DU8G_RASPBERRY_PI -DU8G_WITH_PINLIST
@@ -296,7 +296,7 @@ u8gsdl_fonttop_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 EXTRA_u8gsdl_fonttop_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 
 u8gsdl_fullcolor_SOURCES=sys/sdl/fullcolor/main.c
-u8gsdl_fullcolor_CPPFLAGS=$(libu8gsdl_la_CFLAGS) -save-temps
+u8gsdl_fullcolor_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
 u8gsdl_fullcolor_LDFLAGS=$(libu8gsdl_la_LDFLAGS)
 u8gsdl_fullcolor_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
 EXTRA_u8gsdl_fullcolor_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gsdl.la
