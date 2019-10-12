@@ -38,7 +38,9 @@
 
 #include "u8g.h"
 
-//#define U8G_I2C_WITH_NO_ACK
+#if !defined(U8G_I2C_WITH_NO_ACK) && defined(WANT_U8G_I2C_WITH_NO_ACK)
+# define U8G_I2C_WITH_NO_ACK
+#endif /* !U8G_I2C_WITH_NO_ACK && WANT_U8G_I2C_WITH_NO_ACK */
 
 static uint8_t u8g_i2c_err_code;
 static uint8_t u8g_i2c_opt;		/* U8G_I2C_OPT_NO_ACK, SAM: U8G_I2C_OPT_DEV_1 */
@@ -565,15 +567,28 @@ void u8g_i2c_stop(void)
 
 #elif defined(U8G_RASPBERRY_PI)
 
-#include <wiringPi.h>
-#include <wiringPiI2C.h>
+# ifdef HAVE_WIRINGPI_H
+#  include <wiringPi.h>
+# else
+#  if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#   warning "u8g_com_i2c.c needs <wiringPi.h> when U8G_RASPBERRY_PI is defined"
+#  endif /* __GNUC__ && !__STRICT_ANSI__ */
+# endif /* HAVE_WIRINGPI_H */
+# ifdef HAVE_WIRINGPII2C_H
+#  include <wiringPiI2C.h>
+# else
+#  if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#   warning "u8g_com_i2c.c needs <wiringPiI2C.h> when U8G_RASPBERRY_PI is defined"
+#  endif /* __GNUC__ && !__STRICT_ANSI__ */
+# endif /* HAVE_WIRINGPII2C_H */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h> /* for strerror() */
 #include <errno.h>
 
 #define I2C_SLA         0x3c
 
-static int fd=-1;
+static int fd = -1;
 static uint8_t i2cMode = 0;
 
 void u8g_i2c_init(uint8_t options) {
@@ -587,11 +602,13 @@ void u8g_i2c_init(uint8_t options) {
 
    fd = wiringPiI2CSetup(I2C_SLA);
    if (fd < 0) {
-      printf ("Unable to open I2C device 0: %s\n", strerror (errno)) ;
-      exit (1) ;
+      printf("Unable to open I2C device 0: %s\n", strerror(errno));
+      exit(1);
    }
-   //u8g_SetPIOutput(u8g, U8G_PI_RESET);
-   //u8g_SetPIOutput(u8g, U8G_PI_A0);
+#if 0
+   u8g_SetPIOutput(u8g, U8G_PI_RESET);
+   u8g_SetPIOutput(u8g, U8G_PI_A0);
+#endif /* 0 */
 }
 uint8_t u8g_i2c_start(uint8_t sla) {
    u8g_i2c_send_mode(0);
@@ -600,10 +617,12 @@ uint8_t u8g_i2c_start(uint8_t sla) {
 }
 
 void u8g_i2c_stop(void) {
+   return;
 }
 
 uint8_t u8g_i2c_send_mode(uint8_t mode) {
    i2cMode = mode;
+   return 0;
 } 
 
 uint8_t u8g_i2c_send_byte(uint8_t data) {
@@ -642,6 +661,7 @@ uint8_t u8g_i2c_send_byte(uint8_t data)
 
 void u8g_i2c_stop(void)
 {
+  return;
 }
 
 

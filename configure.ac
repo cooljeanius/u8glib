@@ -45,12 +45,12 @@ AC_ARG_ENABLE([debug],
                         [Compile the debug version (default: disabled)])],
 	[enable_debug=${enableval}],
 	[enable_debug=no])
-AM_CONDITIONAL([DEBUG],[test "x${enable_debug}" = "yes"])
+AM_CONDITIONAL([DEBUG],[test "x${enable_debug}" = "xyes"])
 if test "x${enable_debug}" = "xyes"; then
   dnl# Have to do "changequote" because of how sed is called here:
   changequote({,})
-  CFLAGS=`echo "$CFLAGS" | $SED -e 's/-O[0-9s]*//g'`
-  CXXFLAGS=`echo "$CXXFLAGS" | $SED -e 's/-O[0-9s]*//g'`
+  CFLAGS=`echo "${CFLAGS}" | ${SED} -e 's/-O[0-9s]*//g'`
+  CXXFLAGS=`echo "${CXXFLAGS}" | ${SED} -e 's/-O[0-9s]*//g'`
   changequote([,])
   dnl# add -O0 only if GCC or ICC is used
   if test "x${GCC}" = "xyes" || test "x${ICC}" = "xyes"; then
@@ -90,8 +90,8 @@ dnl# FIXME: Replace `main' with a function in `-lu8gsdl':
 AC_CHECK_LIB([u8gsdl],[main])dnl
 dnl# FIXME: Replace `main' with a function in `-lu8gwpi':
 AC_CHECK_LIB([u8gwpi],[main])dnl
-dnl# FIXME: Replace `main' with a function in `-lwiringPi':
-AC_CHECK_LIB([wiringPi],[main])dnl
+AC_SEARCH_LIBS([u8g_GetGlyph],[u8gbase u8gsdl u8gwpi])dnl
+AC_CHECK_LIB([wiringPi],[wiringPiSetup])dnl
 
 # Checks for header files.
 AC_HEADER_STDBOOL dnl# also "_CHECK"s it
@@ -100,7 +100,12 @@ AC_DEFUN([AC_REQUIRE_HEADER_STDC],[
 ])dnl
 AC_REQUIRE_HEADER_STDC
 AC_CHECK_HEADERS([fcntl.h float.h stddef.h sys/ioctl.h termios.h wiringPi.h \
-                  wiringPiSPI.h])dnl
+                  wiringPiI2C.h wiringPiSPI.h])dnl
+
+if test "x${ac_cv_header_unistd_h}" = "x"; then
+  test -z "${ac_cv_header_unistd_h}"
+  AC_CHECK_HEADERS([unistd.h])
+fi
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_SYS_LARGEFILE
@@ -119,8 +124,10 @@ AC_TYPE_UINT64_T
 
 # Checks for library functions.
 AC_FUNC_MALLOC
-AC_CHECK_FUNCS([atexit memset rand sqrt strerror st_Setup u8g_GetGlyph \
-                usleep])dnl
+AC_CHECK_FUNCS([atexit digitalRead digitalWrite memset pinMode rand sqrt \
+                strerror st_Setup u8g_GetGlyph usleep wiringPiSetup \
+                wiringPiI2CSetup wiringPiI2CWriteReg8 wiringPiSPISetup \
+                wiringPiSPIDataRW])dnl
 
 # Output.
 AC_CONFIG_FILES([Makefile])

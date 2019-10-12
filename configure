@@ -16743,7 +16743,7 @@ else
   enable_debug=no
 fi
 
- if test "x${enable_debug}" = "yes"; then
+ if test "x${enable_debug}" = "xyes"; then
   DEBUG_TRUE=
   DEBUG_FALSE='#'
 else
@@ -16975,9 +16975,64 @@ _ACEOF
   LIBS="-lu8gwpi $LIBS"
 
 fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lwiringPi" >&5
-$as_echo_n "checking for main in -lwiringPi... " >&6; }
-if ${ac_cv_lib_wiringPi_main+:} false; then :
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing u8g_GetGlyph" >&5
+$as_echo_n "checking for library containing u8g_GetGlyph... " >&6; }
+if ${ac_cv_search_u8g_GetGlyph+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_func_search_save_LIBS=$LIBS
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char u8g_GetGlyph ();
+int
+main ()
+{
+return u8g_GetGlyph ();
+  ;
+  return 0;
+}
+_ACEOF
+for ac_lib in '' u8gbase u8gsdl u8gwpi; do
+  if test -z "$ac_lib"; then
+    ac_res="none required"
+  else
+    ac_res=-l$ac_lib
+    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+  fi
+  if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_search_u8g_GetGlyph=$ac_res
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext
+  if ${ac_cv_search_u8g_GetGlyph+:} false; then :
+  break
+fi
+done
+if ${ac_cv_search_u8g_GetGlyph+:} false; then :
+
+else
+  ac_cv_search_u8g_GetGlyph=no
+fi
+rm conftest.$ac_ext
+LIBS=$ac_func_search_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_search_u8g_GetGlyph" >&5
+$as_echo "$ac_cv_search_u8g_GetGlyph" >&6; }
+ac_res=$ac_cv_search_u8g_GetGlyph
+if test "$ac_res" != no; then :
+  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
+
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for wiringPiSetup in -lwiringPi" >&5
+$as_echo_n "checking for wiringPiSetup in -lwiringPi... " >&6; }
+if ${ac_cv_lib_wiringPi_wiringPiSetup+:} false; then :
   $as_echo_n "(cached) " >&6
 else
   ac_check_lib_save_LIBS=$LIBS
@@ -16985,27 +17040,33 @@ LIBS="-lwiringPi  $LIBS"
 cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 /* end confdefs.h.  */
 
-
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char wiringPiSetup ();
 int
 main ()
 {
-return main ();
+return wiringPiSetup ();
   ;
   return 0;
 }
 _ACEOF
 if ac_fn_c_try_link "$LINENO"; then :
-  ac_cv_lib_wiringPi_main=yes
+  ac_cv_lib_wiringPi_wiringPiSetup=yes
 else
-  ac_cv_lib_wiringPi_main=no
+  ac_cv_lib_wiringPi_wiringPiSetup=no
 fi
 rm -f core conftest.err conftest.$ac_objext \
     conftest$ac_exeext conftest.$ac_ext
 LIBS=$ac_check_lib_save_LIBS
 fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_wiringPi_main" >&5
-$as_echo "$ac_cv_lib_wiringPi_main" >&6; }
-if test "x$ac_cv_lib_wiringPi_main" = xyes; then :
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_wiringPi_wiringPiSetup" >&5
+$as_echo "$ac_cv_lib_wiringPi_wiringPiSetup" >&6; }
+if test "x$ac_cv_lib_wiringPi_wiringPiSetup" = xyes; then :
   cat >>confdefs.h <<_ACEOF
 #define HAVE_LIBWIRINGPI 1
 _ACEOF
@@ -17110,7 +17171,7 @@ fi
 
 
 for ac_header in fcntl.h float.h stddef.h sys/ioctl.h termios.h wiringPi.h \
-                  wiringPiSPI.h
+                  wiringPiI2C.h wiringPiSPI.h
 do :
   as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
 ac_fn_c_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"
@@ -17122,6 +17183,22 @@ _ACEOF
 fi
 
 done
+
+if test "x${ac_cv_header_unistd_h}" = "x"; then
+  test -z "${ac_cv_header_unistd_h}"
+  for ac_header in unistd.h
+do :
+  ac_fn_c_check_header_mongrel "$LINENO" "unistd.h" "ac_cv_header_unistd_h" "$ac_includes_default"
+if test "x$ac_cv_header_unistd_h" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_UNISTD_H 1
+_ACEOF
+
+fi
+
+done
+
+fi
 
 # Checks for typedefs, structures, and compiler characteristics.
 # Check whether --enable-largefile was given.
@@ -17659,8 +17736,10 @@ $as_echo "#define malloc rpl_malloc" >>confdefs.h
 fi
 
 
-for ac_func in atexit memset rand sqrt strerror st_Setup u8g_GetGlyph \
-                usleep
+for ac_func in atexit digitalRead digitalWrite memset pinMode rand sqrt \
+                strerror st_Setup u8g_GetGlyph usleep wiringPiSetup \
+                wiringPiI2CSetup wiringPiI2CWriteReg8 wiringPiSPISetup \
+                wiringPiSPIDataRW
 do :
   as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
 ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"

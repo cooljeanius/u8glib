@@ -39,11 +39,11 @@
 
 */
 
-
+#include "config.h"
 #include "u8g.h"
-#ifdef HAVE_UNISTD_H
+#if defined(HAVE_UNISTD_H) || (defined(__APPLE__) && defined(_DARWIN_C_SOURCE))
 # include <unistd.h> /* for usleep() */
-#endif /* HAVE_UNISTD_H */
+#endif /* HAVE_UNISTD_H || (__APPLE__ && _DARWIN_C_SOURCE) */
 
 /*==== Part 1: Derive suitable delay procedure ====*/
 

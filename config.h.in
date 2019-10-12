@@ -3,6 +3,12 @@
 /* Define to 1 if you have the `atexit' function. */
 #undef HAVE_ATEXIT
 
+/* Define to 1 if you have the `digitalRead' function. */
+#undef HAVE_DIGITALREAD
+
+/* Define to 1 if you have the `digitalWrite' function. */
+#undef HAVE_DIGITALWRITE
+
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #undef HAVE_DLFCN_H
 
@@ -42,6 +48,9 @@
 
 /* Define to 1 if you have the `memset' function. */
 #undef HAVE_MEMSET
+
+/* Define to 1 if you have the `pinMode' function. */
+#undef HAVE_PINMODE
 
 /* Define to 1 if you have the `rand' function. */
 #undef HAVE_RAND
@@ -93,6 +102,24 @@
 
 /* Define to 1 if you have the `usleep' function. */
 #undef HAVE_USLEEP
+
+/* Define to 1 if you have the `wiringPiI2CSetup' function. */
+#undef HAVE_WIRINGPII2CSETUP
+
+/* Define to 1 if you have the `wiringPiI2CWriteReg8' function. */
+#undef HAVE_WIRINGPII2CWRITEREG8
+
+/* Define to 1 if you have the <wiringPiI2C.h> header file. */
+#undef HAVE_WIRINGPII2C_H
+
+/* Define to 1 if you have the `wiringPiSetup' function. */
+#undef HAVE_WIRINGPISETUP
+
+/* Define to 1 if you have the `wiringPiSPIDataRW' function. */
+#undef HAVE_WIRINGPISPIDATARW
+
+/* Define to 1 if you have the `wiringPiSPISetup' function. */
+#undef HAVE_WIRINGPISPISETUP
 
 /* Define to 1 if you have the <wiringPiSPI.h> header file. */
 #undef HAVE_WIRINGPISPI_H

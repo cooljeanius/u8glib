@@ -35,10 +35,11 @@
 
 */
 
+#include "config.h"
 #include "u8g.h"
-#ifdef HAVE_STDLIB_H
+#if defined(HAVE_STDLIB_H) || (defined(STDC_HEADERS) && defined(__STDC__))
 # include <stdlib.h> /* for rand() */
-#endif /* HAVE_STDLIB_H */
+#endif /* HAVE_STDLIB_H || (STDC_HEADERS && __STDC__) */
 
 #define ST_FP 4
 

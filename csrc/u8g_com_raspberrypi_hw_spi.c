@@ -43,8 +43,6 @@
     U8G_ATOMIC_START()
     U8G_ATOMIC_END()
  
-
-
 */
 
 #include "u8g.h"
@@ -53,10 +51,23 @@
 
 #if defined(U8G_RASPBERRY_PI)
 
-#include <wiringPiSPI.h>
-#include <wiringPi.h>
+# ifdef HAVE_WIRINGPISPI_H
+#  include <wiringPiSPI.h>
+# else
+#  if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#   warning "u8g_com_raspberrypi_hw_spi.c needs <wiringPiSPI.h> when U8G_RASPBERRY_PI is defined"
+#  endif /* __GNUC__ && !__STRICT_ANSI__ */
+# endif /* HAVE_WIRINGPISPI_H */
+# ifdef HAVE_WIRINGPI_H
+#  include <wiringPi.h>
+# else
+#  if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#   warning "u8g_com_raspberrypi_hw_spi.c needs <wiringPi.h> when U8G_RASPBERRY_PI is defined"
+#  endif /* __GNUC__ && !__STRICT_ANSI__ */
+# endif /* HAVE_WIRINGPI_H */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <errno.h>
 
 uint8_t u8g_com_raspberrypi_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr)

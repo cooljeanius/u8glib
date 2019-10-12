@@ -19,8 +19,20 @@
 
 #if defined(U8G_RASPBERRY_PI)
 
-#include <wiringPi.h>
-#include <wiringPiI2C.h>
+# ifdef HAVE_WIRINGPI_H
+#  include <wiringPi.h>
+# else
+#  if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#   warning "u8g_com_raspberrypi_ssd_i2c.c needs <wiringPi.h> when U8G_RASPBERRY_PI is defined"
+#  endif /* __GNUC__ && !__STRICT_ANSI__ */
+# endif /* HAVE_WIRINGPI_H */
+# ifdef HAVE_WIRINGPII2C_H
+#  include <wiringPiI2C.h>
+# else
+#  if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#   warning "u8g_com_raspberrypi_ssd_i2c.c needs <wiringPiI2C.h> when U8G_RASPBERRY_PI is defined"
+#  endif /* __GNUC__ && !__STRICT_ANSI__ */
+# endif /* HAVE_WIRINGPII2C_H */
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>

@@ -1,5 +1,4 @@
 /*
-  
   u8g_com_io.c
   
   abstraction layer for low level i/o 
@@ -372,13 +371,42 @@ uint8_t u8g_GetPinLevel(uint8_t internal_pin_number)
 
 #elif defined(U8G_RASPBERRY_PI)
 
-#include <wiringPi.h>
-//#include "/usr/local/include/wiringPi.h"
+# ifdef HAVE_WIRINGPI_H
+#  include <wiringPi.h>
+# else
+#  if defined(__has_include)
+#   if __has_include(</usr/local/include/wiringPi.h>)
+#    include "/usr/local/include/wiringPi.h"
+#   else
+#    if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#     warning "u8g_com_io.c needs <wiringPi.h> when U8G_RASPBERRY_PI is defined"
+#    endif /* __GNUC__ && !__STRICT_ANSI__ */
+#   endif /* __has_include(</usr/local/include/wiringPi.h>) */
+#  else 
+#   if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#    warning "your compiler fails to understand __has_include"
+#   endif /* __GNUC__ && !__STRICT_ANSI__ */
+#  endif /* __has_include */
+# endif /* HAVE_WIRINGPI_H */
 
+# ifndef OUTPUT
+#  ifdef stdout
+#   define OUTPUT stdout
+#  else
+#   define OUTPUT 0
+#  endif /* stdout */
+# endif /* !OUTPUT */
 void u8g_SetPinOutput(uint8_t internal_pin_number) {
    pinMode(internal_pin_number, OUTPUT);
 }
 
+# ifndef INPUT
+#  ifdef stdin
+#   define INPUT stdin
+#  else
+#   define INPUT 1
+#  endif /* !INPUT */
+# endif /* !INPUT */
 void u8g_SetPinInput(uint8_t internal_pin_number) {
    pinMode(internal_pin_number, INPUT);
 }
