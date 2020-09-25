@@ -16,6 +16,8 @@ main.s
 *.dirstamp
 .libs/*
 */.libs/*
+*/*/.libs/*
+*/*/*/.libs/*
 Makefile
 bdf2u8g
 config.h
