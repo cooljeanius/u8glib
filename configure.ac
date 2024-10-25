@@ -59,8 +59,8 @@ if test "x${enable_debug}" = "xyes"; then
   changequote([,])
   dnl# add -O0 only if GCC or ICC is used
   if test "x${GCC}" = "xyes" || test "x${ICC}" = "xyes"; then
-    CFLAGS="${CFLAGS} -g -O0 -Wall"
-    CXXFLAGS="${CXXFLAGS} -g -O0 -Wall"
+    CFLAGS="${CFLAGS} -g -O0 -Wall -Wsign-compare"
+    CXXFLAGS="${CXXFLAGS} -g -O0 -Wall -Wsign-compare"
   fi
 else
   dnl# "changequote" is evil; no need to use it here:

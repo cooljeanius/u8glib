@@ -3599,7 +3599,7 @@ then :
   if test "x${ac_ct_CC}" = "xgcc"
 then :
 
-    XX_CFLAGS="${XX_CFLAGS} -Werror=declaration-after-statement"
+    XX_CFLAGS="${XX_CFLAGS} -Werror=declaration-after-statement -Wconversion"
 
 fi
 else case e in #(

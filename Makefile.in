@@ -97,7 +97,7 @@ target_triplet = @target@
 # use "valgrind --tool=memcheck --leak-check=yes" to check memory leak, MemWatch will drag the program.
 @DEBUG_TRUE@@HAVE_VALGRIND_TRUE@am__append_1 = -DMEMWATCH
 @DEBUG_TRUE@am__append_2 = -DDEBUG=1
-@DEBUG_TRUE@am__append_3 = -g -Wall
+@DEBUG_TRUE@am__append_3 = -g -Wall -Wsign-compare
 @DEBUG_FALSE@am__append_4 = -O3 -Wall
 bin_PROGRAMS = $(am__EXEEXT_1) $(am__EXEEXT_2)
 noinst_PROGRAMS = $(am__EXEEXT_3)

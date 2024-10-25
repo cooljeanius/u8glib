@@ -39,7 +39,7 @@ if HAVE_VALGRIND
 DEFS+=-DMEMWATCH
 endif
 DEFS+= -DDEBUG=1
-AM_CFLAGS+=-g -Wall
+AM_CFLAGS+=-g -Wall -Wsign-compare
 
 else
 AM_CFLAGS+=-O3 -Wall

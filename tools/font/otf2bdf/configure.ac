@@ -32,7 +32,7 @@ dnl# get Compiler flags right.
 AS_IF([test "x${CC}" = "xgcc" && test "x${GCC}" = "xyes"],[
   XX_CFLAGS="-ansi -Wall -Wextra -Werror=shadow -Wwrite-strings -pedantic -Wno-long-long"
   AS_IF([test "x${ac_ct_CC}" = "xgcc"],[
-    XX_CFLAGS="${XX_CFLAGS} -Werror=declaration-after-statement"
+    XX_CFLAGS="${XX_CFLAGS} -Werror=declaration-after-statement -Wconversion"
   ])dnl
 ],[
   AS_CASE(["${host}"],

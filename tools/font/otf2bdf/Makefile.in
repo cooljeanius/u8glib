@@ -47,9 +47,9 @@ bindir = @bindir@
 mandir = @mandir@
 datarootdir = @datarootdir@
 
-all: otf2bdf
+all: otf2bdf config.h
 
-otf2bdf: $(OBJS)
+otf2bdf: $(OBJS) config.h
 	$(CC) $(STATIC) $(LDFLAGS) -o otf2bdf $(OBJS) $(LIBS)
 
 clean:
@@ -81,7 +81,20 @@ uninstall:
 configure: configure.ac
 	autoconf
 
-Makefile: Makefile.in
-	./config.status
+config.h: config.h.in config.status
+	./config.status $@ && touch $@
+
+config.h.in: configure.ac
+	autoheader && touch $@
+
+config.status: configure
+	$(SHELL) ./config.status --recheck
+
+Makefile: Makefile.in config.status
+	./config.status $@ && touch $@
+
+# Dependencies:
+otf2bdf.o: otf2bdf.c remap.h
+remap.o: remap.c
 
 # end of Makefile
