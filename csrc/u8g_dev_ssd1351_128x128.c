@@ -665,7 +665,7 @@ uint8_t u8g_dev_ssd1351_128x128_hicolor_fn(u8g_t *u8g, u8g_dev_t *dev, uint8_t m
     case U8G_DEV_MSG_PAGE_NEXT:
       {
         u8g_pb_t *pb = (u8g_pb_t *)(dev->dev_mem);
-        uint8_t i, j;
+        u8g_uint_t i, j;
         uint8_t page_height;
 	uint8_t *ptr = pb->buf;
 
