@@ -371,22 +371,15 @@ uint8_t u8g_GetPinLevel(uint8_t internal_pin_number)
 
 #elif defined(U8G_RASPBERRY_PI)
 
-# ifdef HAVE_WIRINGPI_H
+# ifndef __has_include
+#  define __has_include(foo) 0
+# endif /* !__has_include */
+# if defined(HAVE_WIRINGPI_H) || __has_include(<wiringPi.h>)
 #  include <wiringPi.h>
 # else
-#  if defined(__has_include)
-#   if __has_include(</usr/local/include/wiringPi.h>)
-#    include "/usr/local/include/wiringPi.h"
-#   else
-#    if defined(__GNUC__) && !defined(__STRICT_ANSI__)
-#     warning "u8g_com_io.c needs <wiringPi.h> when U8G_RASPBERRY_PI is defined"
-#    endif /* __GNUC__ && !__STRICT_ANSI__ */
-#   endif /* __has_include(</usr/local/include/wiringPi.h>) */
-#  else 
-#   if defined(__GNUC__) && !defined(__STRICT_ANSI__)
-#    warning "your compiler fails to understand __has_include"
-#   endif /* __GNUC__ && !__STRICT_ANSI__ */
-#  endif /* __has_include */
+#  if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#   warning "u8g_com_io.c needs <wiringPi.h> when U8G_RASPBERRY_PI is defined"
+#  endif /* __GNUC__ && !__STRICT_ANSI__ */
 # endif /* HAVE_WIRINGPI_H */
 
 # ifndef OUTPUT
