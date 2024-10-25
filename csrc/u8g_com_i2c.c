@@ -567,14 +567,17 @@ void u8g_i2c_stop(void)
 
 #elif defined(U8G_RASPBERRY_PI)
 
-# ifdef HAVE_WIRINGPI_H
+# ifndef __has_include
+#  define __has_include(foo) 0
+# endif /* !__has_include */
+# if defined(HAVE_WIRINGPI_H) || __has_include(<wiringPi.h>)
 #  include <wiringPi.h>
 # else
 #  if defined(__GNUC__) && !defined(__STRICT_ANSI__)
 #   warning "u8g_com_i2c.c needs <wiringPi.h> when U8G_RASPBERRY_PI is defined"
 #  endif /* __GNUC__ && !__STRICT_ANSI__ */
 # endif /* HAVE_WIRINGPI_H */
-# ifdef HAVE_WIRINGPII2C_H
+# if defined(HAVE_WIRINGPII2C_H) || __has_include(<wiringPiI2C.h>)
 #  include <wiringPiI2C.h>
 # else
 #  if defined(__GNUC__) && !defined(__STRICT_ANSI__)
