@@ -78,4 +78,10 @@ uninstall:
 	$(RM) -f $(bindir)/otf2bdf
 	$(RM) -f $(mandir)/man1/otf2bdf.1
 
+configure: configure.ac
+	autoconf
+
+Makefile: Makefile.in
+	./config.status
+
 # end of Makefile
