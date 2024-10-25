@@ -838,7 +838,7 @@ generate_font(FILE *out, char *iname, const char *oname)
         ex = ey = 0;
         bp = global_face->glyph->bitmap.buffer;
         for (y = 0; y < global_face->glyph->bitmap.rows; y++) {
-            for (x = 0; x < global_face->glyph->bitmap.width; x++) {
+            for (unsigned int x = 0; x < global_face->glyph->bitmap.width; x++) {
                 if (bp[x >> 3] & (0x80 >> (x & 7))) {
                     if (x < sx) sx = x;
                     if (x > ex) ex = x;
