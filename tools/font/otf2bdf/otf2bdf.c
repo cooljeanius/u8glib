@@ -847,21 +847,23 @@ generate_font(FILE *out, char *iname, const char *oname)
          * Determine the actual bounding box of the glyph bitmap.  Do not
          * forget that the glyph is rendered upside down!
          */
-        unsigned int y;
         sx = sy = 0xffff;
         ex = ey = 0;
         bp = global_face->glyph->bitmap.buffer;
-        for (y = 0; y < global_face->glyph->bitmap.rows; y++) {
-            unsigned int ux;
-            for (ux = 0; ux < global_face->glyph->bitmap.width; ux++) {
-                if (bp[ux >> 3] & (0x80 >> (ux & 7))) {
-                    if (ux < sx) sx = ux;
-                    if (ux > ex) ex = ux;
-                    if (y < sy) sy = y;
-                    if (y > ey) ey = y;
-                }
+        if (bp != NULL) {
+            unsigned int uy;
+            for (uy = 0; uy < global_face->glyph->bitmap.rows; uy++) {
+            	unsigned int ux;
+            	for (ux = 0; ux < global_face->glyph->bitmap.width; ux++) {
+                    if (bp[ux >> 3] & (0x80 >> (ux & 7))) {
+                    	if (ux < sx) sx = ux;
+                    	if (ux > ex) ex = ux;
+                    	if (uy < sy) sy = uy;
+                        if (uy > ey) ey = uy;
+                    }
+            	}
+            	bp += global_face->glyph->bitmap.pitch;
             }
-            bp += global_face->glyph->bitmap.pitch;
         }
 
         /*
