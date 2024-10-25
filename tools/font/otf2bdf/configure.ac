@@ -5,7 +5,7 @@ AC_PREREQ([2.61])
 AC_INIT([otf2bdf],[3.1],[mleisher@crl.nmsu.edu])
 AC_CONFIG_SRCDIR([otf2bdf.c])
 AC_CONFIG_HEADERS([config.h])
-AC_REQUIRE_AUX_FILE([mkinstalldirs])
+AC_REQUIRE_AUX_FILE([mkinstalldirs])dnl
 
 dnl# Checks for programs.
 AC_PROG_CC
@@ -35,8 +35,8 @@ else
 fi
 AC_SUBST([XX_CFLAGS])dnl
 
-AC_CHECK_PROG([RM],[rm],[rm])
-AC_CHECK_PROG([CP],[cp],[cp])
+AC_CHECK_PROG([RM],[rm],[rm]) ##
+AC_CHECK_PROG([CP],[cp],[cp])dnl
 
 dnl# Checks for header files.
 AC_DEFUN([AC_REQUIRE_HEADER_STDC],[
@@ -44,6 +44,11 @@ AC_DEFUN([AC_REQUIRE_HEADER_STDC],[
 ])dnl
 AC_REQUIRE_HEADER_STDC
 AC_CHECK_HEADERS([windows.h])dnl
+
+if test "x${ac_cv_header_unistd_h}" = "x"; then
+  test -z "${ac_cv_header_unistd_h}" || unset ac_cv_header_unistd_h
+  AC_CHECK_HEADERS([unistd.h])
+fi
 
 dnl# Checks for library functions.
 AC_FUNC_MALLOC

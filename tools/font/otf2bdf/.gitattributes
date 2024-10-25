@@ -1,2 +1,6 @@
 # Tell GitHub to ignore when calculating language stats:
+config.guess linguist-vendored
+config.sub linguist-vendored
+configure linguist-generated
+configure.scan linguist-generated
 mkinstalldirs linguist-vendored

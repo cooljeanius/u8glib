@@ -1,13 +1,16 @@
 
 ACLOCAL_AMFLAGS = -I m4
+AUTOMAKE_OPTIONS = subdir-objects -Wno-portability
 AM_LDFLAGS=
-AM_CFLAGS=
+AM_CFLAGS=-std=gnu89
 
 CLEANFILES = main.i main.s
 DISTCLEANFILES = *~ autoscan.log
 
+INCSRCS=-Icsrc -Icppsrc
+
 DEFS+= \
-    -Icsrc -Icppsrc -Idogmsrc -Inonarduino \
+    $(INCSRCS) -Idogmsrc -Inonarduino \
     -I$(top_srcdir)/csrc -I$(top_srcdir)/cppsrc -I$(top_srcdir)/dogmsrc \
     -I$(top_srcdir)/nonarduino \
     @LFS_CFLAGS@ \
@@ -30,7 +33,9 @@ AM_LDFLAGS += \
 
 if DEBUG
 # use "valgrind --tool=memcheck --leak-check=yes" to check memory leak, MemWatch will drag the program.
-#DEFS+=-DMEMWATCH
+if HAVE_VALGRIND
+DEFS+=-DMEMWATCH
+endif
 DEFS+= -DDEBUG=1
 AM_CFLAGS+=-g -Wall
 
@@ -213,17 +218,19 @@ libu8gsdl_la_SOURCES=$(SRC_SDL)
 
 libu8gwpi_la_SOURCES=$(SRC_WPI)
 
-libu8gbase_la_CFLAGS=-Icsrc -Icppsrc -Inonarduino -DU8G_16BIT `$(SDL_CONFIG) --cflags`
+INC_COMMON=$(INCSRCS) -Inonarduino
+libu8gbase_la_CFLAGS=$(INC_COMMON) -DU8G_16BIT `$(SDL_CONFIG) --cflags`
 libu8gbase_la_CPPFLAGS=$(libu8gbase_la_CFLAGS)
 libu8gbase_la_LDFLAGS=
 
-libu8gsdl_la_CFLAGS=-Icsrc -Icppsrc -Inonarduino -DU8G_16BIT `$(SDL_CONFIG) --cflags`
+libu8gsdl_la_CFLAGS=$(INC_COMMON) -DU8G_16BIT `$(SDL_CONFIG) --cflags`
 libu8gsdl_la_CPPFLAGS=$(libu8gsdl_la_CFLAGS)
 libu8gsdl_la_LDFLAGS=`$(SDL_CONFIG) --libs`
 libu8gsdl_la_LIBADD=$(top_builddir)/libu8gbase.la
 
-libu8gwpi_la_CFLAGS=-Icsrc -Icppsrc -Inonarduino -DU8G_16BIT -DU8G_RASPBERRY_PI -DU8G_WITH_PINLIST
-libu8gwpi_la_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
+libu8gwpi_la_C_AND_CPPFLAGS=$(INC_COMMON) -DU8G_16BIT -DU8G_RASPBERRY_PI -DU8G_WITH_PINLIST
+libu8gwpi_la_CFLAGS=-std=gnu89 $(libu8gwpi_la_C_AND_CPPFLAGS)
+libu8gwpi_la_CPPFLAGS=$(libu8gwpi_la_C_AND_CPPFLAGS)
 libu8gwpi_la_LDFLAGS=-lwiringPi
 libu8gwpi_la_LIBADD=$(top_builddir)/libu8gbase.la
 
@@ -386,7 +393,7 @@ u8gwpi_spacetrash_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.
 EXTRA_u8gwpi_spacetrash_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 
 u8gwpi_chess_SOURCES=nonarduino/wpimain.cpp sys/arduino/Chess/Chess.pde
-u8gwpi_chess_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
+u8gwpi_chess_CPPFLAGS=$(libu8gwpi_la_C_AND_CPPFLAGS)
 u8gwpi_chess_LDFLAGS=$(libu8gwpi_la_LDFLAGS)
 u8gwpi_chess_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 EXTRA_u8gwpi_chess_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
@@ -399,3 +406,4 @@ EXTRA_u8gwpi_chessdogm_DEPENDENCIES=$(top_builddir)/libu8gwpi.la
 
 distclean-local:
 	rm -rf autom4te.cache || rmdir autom4te.cache
+	rm -rf *.dSYM || rmdir *.dSYM

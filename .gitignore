@@ -20,7 +20,10 @@ main.s
 */*/*/.libs/*
 Makefile
 bdf2u8g
+confdefs.h
 config.h
+conftest*
+conf*/*.awk
 *.status
 libtool
 lib*.la

@@ -7,7 +7,7 @@ AC_CONFIG_SRCDIR([csrc/u8g_font.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 AC_CANONICAL_TARGET
-AM_INIT_AUTOMAKE([-Wall subdir-objects])
+AM_INIT_AUTOMAKE([-Wall -Wno-portability subdir-objects])
 AM_MAINTAINER_MODE
 
 #magic for conditional check in Makefile:
@@ -28,12 +28,15 @@ AC_DEFUN([AC_REQUIRE_PROGS],[
 AC_REQUIRE_PROGS
 AC_PROG_CPP
 AC_PROG_CXX
-AC_PROG_GCC_TRADITIONAL
 AM_PROG_AR
 AM_PROG_AS
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PATH_PROG([SDL_CONFIG],[sdl-config],[false])dnl
+
+AC_PATH_PROG([VALGRIND],[valgrind])dnl
+
+AM_CONDITIONAL([HAVE_VALGRIND],[test "x${VALGRIND}" != "x" && test -x "${VALGRIND}"])dnl
 
 # Checks for libraries.
 LT_PREREQ([2.2])
@@ -102,8 +105,16 @@ AC_REQUIRE_HEADER_STDC
 AC_CHECK_HEADERS([fcntl.h float.h stddef.h sys/ioctl.h termios.h wiringPi.h \
                   wiringPiI2C.h wiringPiSPI.h])dnl
 
+if test "x${ac_cv_header_inttypes_h}" = "x"; then
+  test -z "${ac_cv_header_inttypes_h}" || unset ac_cv_header_inttypes_h
+  AC_CHECK_HEADERS([inttypes.h])
+fi
+if test "x${ac_cv_header_stdint_h}" = "x"; then
+  test -z "${ac_cv_header_stdint_h}" || unset ac_cv_header_stdint_h
+  AC_CHECK_HEADERS([stdint.h])
+fi
 if test "x${ac_cv_header_unistd_h}" = "x"; then
-  test -z "${ac_cv_header_unistd_h}"
+  test -z "${ac_cv_header_unistd_h}" || unset ac_cv_header_unistd_h
   AC_CHECK_HEADERS([unistd.h])
 fi
 

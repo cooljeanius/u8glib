@@ -1,13 +1,14 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.69])
+AC_PREREQ([2.72])
 AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
 AC_PROG_CXX
+AC_PROG_AR
 AC_PROG_AWK
 AC_PROG_CC
 AC_PROG_CPP
@@ -17,21 +18,15 @@ AC_PROG_MAKE_SET
 AC_PROG_RANLIB
 
 # Checks for libraries.
-# FIXME: Replace `main' with a function in `-lc':
+# FIXME: Replace 'main' with a function in '-lc':
 AC_CHECK_LIB([c], [main])
-# FIXME: Replace `main' with a function in `-lnosys':
+# FIXME: Replace 'main' with a function in '-lnosys':
 AC_CHECK_LIB([nosys], [main])
-# FIXME: Replace `main' with a function in `-lu8gbase':
-AC_CHECK_LIB([u8gbase], [main])
-# FIXME: Replace `main' with a function in `-lu8gsdl':
-AC_CHECK_LIB([u8gsdl], [main])
-# FIXME: Replace `main' with a function in `-lu8gwpi':
-AC_CHECK_LIB([u8gwpi], [main])
-# FIXME: Replace `main' with a function in `-lwiringPi':
+# FIXME: Replace 'main' with a function in '-lwiringPi':
 AC_CHECK_LIB([wiringPi], [main])
 
 # Checks for header files.
-AC_CHECK_HEADERS([fcntl.h float.h inttypes.h stddef.h stdint.h stdlib.h string.h sys/ioctl.h termios.h unistd.h])
+AC_CHECK_HEADERS([fcntl.h inttypes.h stdint.h sys/ioctl.h termios.h unistd.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_CHECK_HEADER_STDBOOL
