@@ -1,6 +1,6 @@
 
-ACLOCAL_AMFLAGS = -I m4
-AUTOMAKE_OPTIONS = subdir-objects -Wno-portability
+ACLOCAL_AMFLAGS = -I m4 --install
+AUTOMAKE_OPTIONS = subdir-objects -Wno-obsolete -Wno-portability
 AM_LDFLAGS=
 AM_CFLAGS=-std=gnu89
 
@@ -377,19 +377,19 @@ EXTRA_u8gsdl_xbm_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu
 
 u8gwpi_logo_SOURCES=nonarduino/wpimain.cpp sys/arduino/U8gLogo/U8gLogo.pde
 u8gwpi_logo_CFLAGS=$(libu8gwpi_la_CFLAGS)
-u8gwpi_logo_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
+u8gwpi_logo_CPPFLAGS=$(libu8gwpi_la_C_AND_CPPFLAGS)
 u8gwpi_logo_LDFLAGS=$(libu8gwpi_la_LDFLAGS)
 u8gwpi_logo_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 EXTRA_u8gwpi_logo_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 
 u8gwpi_gtest_SOURCES=nonarduino/wpimain.cpp sys/arduino/GraphicsTest/GraphicsTest.pde
-u8gwpi_gtest_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
+u8gwpi_gtest_CPPFLAGS=$(libu8gwpi_la_C_AND_CPPFLAGS)
 u8gwpi_gtest_LDFLAGS=$(libu8gwpi_la_LDFLAGS)
 u8gwpi_gtest_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 EXTRA_u8gwpi_gtest_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 
 u8gwpi_spacetrash_SOURCES=nonarduino/wpimain.cpp sys/arduino/SpaceTrashDogm/SpaceTrash.pde
-u8gwpi_spacetrash_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
+u8gwpi_spacetrash_CPPFLAGS=$(libu8gwpi_la_C_AND_CPPFLAGS)
 u8gwpi_spacetrash_LDFLAGS=$(libu8gwpi_la_LDFLAGS)
 u8gwpi_spacetrash_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 EXTRA_u8gwpi_spacetrash_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
@@ -401,7 +401,7 @@ u8gwpi_chess_LDADD=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 EXTRA_u8gwpi_chess_DEPENDENCIES=$(top_builddir)/libu8gbase.la $(top_builddir)/libu8gwpi.la
 
 u8gwpi_chessdogm_SOURCES=nonarduino/wpimain.cpp sys/arduino/ChessDogm/Chess.pde
-u8gwpi_chessdogm_CPPFLAGS=$(libu8gwpi_la_CFLAGS)
+u8gwpi_chessdogm_CPPFLAGS=$(libu8gwpi_la_C_AND_CPPFLAGS)
 u8gwpi_chessdogm_LDFLAGS=$(libu8gwpi_la_LDFLAGS)
 u8gwpi_chessdogm_LDADD=$(top_builddir)/libu8gwpi.la
 EXTRA_u8gwpi_chessdogm_DEPENDENCIES=$(top_builddir)/libu8gwpi.la

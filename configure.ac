@@ -7,7 +7,7 @@ AC_CONFIG_SRCDIR([csrc/u8g_font.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 AC_CANONICAL_TARGET
-AM_INIT_AUTOMAKE([-Wall -Wno-portability subdir-objects])
+AM_INIT_AUTOMAKE([-Wall -Wno-obsolete -Wno-portability subdir-objects])
 AM_MAINTAINER_MODE
 
 #magic for conditional check in Makefile:
@@ -17,10 +17,11 @@ SED=sed
 # Checks for programs.
 AC_DEFUN([AC_REQUIRE_PROGS],[
   AC_REQUIRE([AC_PROG_AWK])dnl
+  AC_REQUIRE([AC_PROG_EGREP])dnl
   AC_REQUIRE([AC_PROG_MAKE_SET])dnl
   AC_REQUIRE([AC_USE_SYSTEM_EXTENSIONS])dnl
   AC_REQUIRE([AC_PROG_CC])dnl
-  m4_ifdef([AM_PROG_CC_C_O],[
+  m4_ifdef([AM_PROG_CC_C_O],[dnl
     AC_REQUIRE([AM_PROG_CC_C_O])dnl
   ])dnl
   AC_REQUIRE([AC_PROG_RANLIB])dnl
@@ -99,12 +100,6 @@ AC_CHECK_LIB([wiringPi],[wiringPiSetup])dnl
 
 # Checks for header files.
 AC_HEADER_STDBOOL dnl# also "_CHECK"s it
-AC_DEFUN([AC_REQUIRE_HEADER_STDC],[
-  m4_ifdef([AC_HEADER_STDC],[dnl
-    AC_REQUIRE([AC_HEADER_STDC])dnl
-  ])dnl
-])dnl
-AC_REQUIRE_HEADER_STDC
 AC_CHECK_HEADERS([fcntl.h float.h stddef.h sys/ioctl.h termios.h wiringPi.h \
                   wiringPiI2C.h wiringPiSPI.h])dnl
 

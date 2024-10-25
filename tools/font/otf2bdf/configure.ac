@@ -45,10 +45,6 @@ AC_CHECK_PROG([RM],[rm],[rm]) ##
 AC_CHECK_PROG([CP],[cp],[cp])dnl
 
 dnl# Checks for header files.
-AC_DEFUN([AC_REQUIRE_HEADER_STDC],[
-  AC_REQUIRE([AC_HEADER_STDC])dnl
-])dnl
-AC_REQUIRE_HEADER_STDC
 AC_CHECK_HEADERS([windows.h])dnl
 
 if test "x${ac_cv_header_unistd_h}" = "x"; then

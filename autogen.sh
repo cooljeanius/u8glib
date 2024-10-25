@@ -46,7 +46,7 @@ elif test -x "$(which glibtoolize)"; then
   LIBTOOLIZE=glibtoolize
 fi
 ${LIBTOOLIZE} --force --copy --install --automake
-aclocal -I m4
+aclocal -I m4 --install
 automake --copy --add-missing --gnits -Wno-portability
 autoconf -Wno-obsolete
 
