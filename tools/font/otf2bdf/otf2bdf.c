@@ -838,10 +838,11 @@ generate_font(FILE *out, char *iname, const char *oname)
         ex = ey = 0;
         bp = global_face->glyph->bitmap.buffer;
         for (y = 0; y < global_face->glyph->bitmap.rows; y++) {
-            for (unsigned int x = 0; x < global_face->glyph->bitmap.width; x++) {
-                if (bp[x >> 3] & (0x80 >> (x & 7))) {
-                    if (x < sx) sx = x;
-                    if (x > ex) ex = x;
+            unsigned int ux;
+            for (ux = 0; ux < global_face->glyph->bitmap.width; ux++) {
+                if (bp[ux >> 3] & (0x80 >> (ux & 7))) {
+                    if (ux < sx) sx = ux;
+                    if (ux > ex) ex = ux;
                     if (y < sy) sy = y;
                     if (y > ey) ey = y;
                 }

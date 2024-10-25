@@ -3598,8 +3598,13 @@ fi
 if test "x${CC}" = "xgcc" && test "x${GCC}" = "xyes"
 then :
 
-  XX_CFLAGS="-Wall -Wextra -Werror=shadow -Wwrite-strings -pedantic"
+  XX_CFLAGS="-ansi -Wall -Wextra -Werror=shadow -Wwrite-strings -pedantic -Wno-long-long"
+  if test "x${ac_ct_CC}" = "xgcc"
+then :
 
+    XX_CFLAGS="${XX_CFLAGS} -Werror=declaration-after-statement"
+
+fi
 else case e in #(
   e)
   case "${host}" in #(
