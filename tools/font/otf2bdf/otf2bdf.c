@@ -31,10 +31,23 @@
 
 #include <string.h>
 
+#if defined(__GNUC__) && defined(__GNUC_MINOR__) && defined(__STRICT_ANSI__)
+# if (__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 6))
+#  pragma GCC diagnostic push
+#  pragma GCC diagnostic ignored "-Wlong-long"
+# endif /* GCC 4.6+ */
+#endif /* GCC with '-ansi' */
+
 #include <ft2build.h>
 #include FT_GLYPH_H
 #include FT_SFNT_NAMES_H
 #include FT_TRUETYPE_TABLES_H
+
+#if defined(__GNUC__) && defined(__GNUC_MINOR__) && defined(__STRICT_ANSI__)
+# if (__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 6))
+#  pragma GCC diagnostic pop
+# endif /* GCC 4.6+ */
+#endif /* GCC with '-ansi' */
 
 /*
  * Include the remapping support.
