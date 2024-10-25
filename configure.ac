@@ -32,6 +32,7 @@ AM_PROG_AR
 AM_PROG_AS
 AC_PROG_INSTALL
 AC_PROG_LN_S
+AC_PATH_PROG([FREETYPE_CONFIG],[freetype-config],[false])
 AC_PATH_PROG([SDL_CONFIG],[sdl-config],[false])dnl
 
 AC_PATH_PROG([VALGRIND],[valgrind])dnl
@@ -93,13 +94,15 @@ dnl# FIXME: Replace `main' with a function in `-lu8gsdl':
 AC_CHECK_LIB([u8gsdl],[main])dnl
 dnl# FIXME: Replace `main' with a function in `-lu8gwpi':
 AC_CHECK_LIB([u8gwpi],[main])dnl
-AC_SEARCH_LIBS([u8g_GetGlyph],[u8gbase u8gsdl u8gwpi])dnl
+AC_SEARCH_LIBS([u8g_GetGlyph],[u8gbase u8gsdl u8gwpi u8glib u8g])dnl
 AC_CHECK_LIB([wiringPi],[wiringPiSetup])dnl
 
 # Checks for header files.
 AC_HEADER_STDBOOL dnl# also "_CHECK"s it
 AC_DEFUN([AC_REQUIRE_HEADER_STDC],[
-  AC_REQUIRE([AC_HEADER_STDC])dnl
+  m4_ifdef([AC_HEADER_STDC],[dnl
+    AC_REQUIRE([AC_HEADER_STDC])dnl
+  ])dnl
 ])dnl
 AC_REQUIRE_HEADER_STDC
 AC_CHECK_HEADERS([fcntl.h float.h stddef.h sys/ioctl.h termios.h wiringPi.h \

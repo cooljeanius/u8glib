@@ -12,6 +12,7 @@ ltmain.sh linguist-vendored
 m4/libtool.m4 linguist-vendored
 m4/lt*.m4 linguist-vendored
 missing linguist-vendored
+sys/msp430/*/Makefile.gnu linguist-language=makefile
 
 # Gnulib's git-merge-changelog driver:
 ChangeLog    merge=cl-merge

@@ -3531,8 +3531,16 @@ fi
 
 
 OLDLIBS="${LIBS}"
-LIBS="${LIBS} `freetype-config --libs`"
-CPPFLAGS="${CPPFLAGS} `freetype-config --cflags`"
+if test "x${FREETYPE_CONFIG}" != "x" && test "x${FREETYPE_CONFIG}" != "xfalse" && test -x "${FREETYPE_CONFIG}"; then
+  LIBS="${LIBS} `freetype-config --libs`"
+  CPPFLAGS="${CPPFLAGS} `freetype-config --cflags`"
+elif test -x "`which pkg-config`" && pkg-config --exists freetype2; then
+  LIBS="${LIBS} `pkg-config --libs freetype2`"
+  CPPFLAGS="${CPPFLAGS} `pkg-config --cflags freetype2`"
+else
+  LIBS="${LIBS} -lfreetype"
+  CPPFLAGS="${CPPFLAGS} -Werror"
+fi
 
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for FT_Init_FreeType in -lfreetype" >&5
 printf %s "checking for FT_Init_FreeType in -lfreetype... " >&6; }

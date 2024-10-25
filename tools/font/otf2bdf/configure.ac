@@ -12,8 +12,16 @@ AC_PROG_CC
 AC_PATH_PROG([FREETYPE_CONFIG],[freetype-config],[false])dnl
 
 OLDLIBS="${LIBS}"
-LIBS="${LIBS} `freetype-config --libs`"
-CPPFLAGS="${CPPFLAGS} `freetype-config --cflags`"
+if test "x${FREETYPE_CONFIG}" != "x" && test "x${FREETYPE_CONFIG}" != "xfalse" && test -x "${FREETYPE_CONFIG}"; then
+  LIBS="${LIBS} `freetype-config --libs`"
+  CPPFLAGS="${CPPFLAGS} `freetype-config --cflags`"
+elif test -x "`which pkg-config`" && pkg-config --exists freetype2; then
+  LIBS="${LIBS} `pkg-config --libs freetype2`"
+  CPPFLAGS="${CPPFLAGS} `pkg-config --cflags freetype2`"
+else
+  LIBS="${LIBS} -lfreetype"
+  CPPFLAGS="${CPPFLAGS} -Werror"
+fi
 AC_CHECK_LIB([freetype],[FT_Init_FreeType],[LIBS="${LIBS} -lfreetype"],
     [AC_MSG_ERROR([Cannot find Freetype library! Compile FreeType first.])])
 AC_SUBST([OLDLIBS])dnl

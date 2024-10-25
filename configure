@@ -689,6 +689,7 @@ HAVE_VALGRIND_FALSE
 HAVE_VALGRIND_TRUE
 VALGRIND
 SDL_CONFIG
+FREETYPE_CONFIG
 LN_S
 am__fastdepCCAS_FALSE
 am__fastdepCCAS_TRUE
@@ -6688,6 +6689,53 @@ else
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no, using $LN_S" >&5
 printf "%s\n" "no, using $LN_S" >&6; }
 fi
+
+# Extract the first word of "freetype-config", so it can be a program name with args.
+set dummy freetype-config; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_path_FREETYPE_CONFIG+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) case $FREETYPE_CONFIG in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_FREETYPE_CONFIG="$FREETYPE_CONFIG" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_path_FREETYPE_CONFIG="$as_dir$ac_word$ac_exec_ext"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  test -z "$ac_cv_path_FREETYPE_CONFIG" && ac_cv_path_FREETYPE_CONFIG="false"
+  ;;
+esac ;;
+esac
+fi
+FREETYPE_CONFIG=$ac_cv_path_FREETYPE_CONFIG
+if test -n "$FREETYPE_CONFIG"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $FREETYPE_CONFIG" >&5
+printf "%s\n" "$FREETYPE_CONFIG" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
 
 # Extract the first word of "sdl-config", so it can be a program name with args.
 set dummy sdl-config; ac_word=$2
@@ -18607,7 +18655,7 @@ return u8g_GetGlyph ();
   return 0;
 }
 _ACEOF
-for ac_lib in '' u8gbase u8gsdl u8gwpi
+for ac_lib in '' u8gbase u8gsdl u8gwpi u8glib u8g
 do
   if test -z "$ac_lib"; then
     ac_res="none required"

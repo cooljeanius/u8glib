@@ -4,6 +4,8 @@ AUTOMAKE_OPTIONS = subdir-objects -Wno-portability
 AM_LDFLAGS=
 AM_CFLAGS=-std=gnu89
 
+SUBDIRS = tools/font/otf2bdf
+
 CLEANFILES = main.i main.s
 DISTCLEANFILES = *~ autoscan.log
 
@@ -248,7 +250,7 @@ BIN_TOOLS=bdf2u8g
 bdf2u8g_SOURCES= \
     tools/font/bdf2u8g/bdf2u8g.c \
     $(NULL)
-test:
+test check-local:
 	./bdf2u8g -f 2 tools/font/bdf/9x18.bdf u8g_aafont_9x18 test_u8g_aafont_9x18.c
 
 bin_PROGRAMS=$(BIN_TOOLS) $(BIN_SDL)
