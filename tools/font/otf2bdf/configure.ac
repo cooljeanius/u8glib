@@ -29,18 +29,13 @@ AC_SUBST([LIBS])dnl
 
 dnl# get Compiler flags right.
 
-if test "x${CC}" = "xgcc"; then
-	XX_CFLAGS="-Wall -pedantic"
-else
-	case "${host}" in
-  		alpha-dec-osf*)
-        	XX_CFLAGS="-std1 -O2 -g3"
-       		;;
-  		*)
-          	XX_CFLAGS=""
-       		;;
-	esac
-fi
+AS_IF([test "x${CC}" = "xgcc" && test "x${GCC}" = "xyes"],[
+  XX_CFLAGS="-Wall -Wextra -Werror=shadow -Wwrite-strings -pedantic"
+],[
+  AS_CASE(["${host}"],
+    [alpha-dec-osf*],[XX_CFLAGS="-std1 -O2 -g3"],
+    [*-*-*],[XX_CFLAGS=""])dnl
+])dnl
 AC_SUBST([XX_CFLAGS])dnl
 
 AC_CHECK_PROG([RM],[rm],[rm]) ##

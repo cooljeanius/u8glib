@@ -94,7 +94,7 @@
 /*
  * String names for the string indexes. Used for error messages.
  */
-static char *string_names[] = {
+static const char *string_names[] = {
     "\"Copyright\"",
     "\"Family\"",
     "\"SubFamily\"",
@@ -143,8 +143,8 @@ static int load_flags = FT_LOAD_DEFAULT;
 /*
  * The default platform and encoding ID's.
  */
-static int pid = DEFAULT_PLATFORM_ID;
-static int eid = DEFAULT_ENCODING_ID;
+static int global_pid = DEFAULT_PLATFORM_ID;
+static int global_eid = DEFAULT_ENCODING_ID;
 
 /*
  * Default point size and resolutions.
@@ -257,7 +257,7 @@ static double swscale;
  *
  **************************************************************************/
 
-static char *platform_names[] = {
+static const char *platform_names[] = {
     "Apple Unicode", "Macintosh", "ISO", "Microsoft", "Unknown"
 };
 static int nplatform_names = sizeof(platform_names)/sizeof(platform_names[0]);
@@ -265,7 +265,7 @@ static int nplatform_names = sizeof(platform_names)/sizeof(platform_names[0]);
 /*
  * Mac encoding names used when creating the BDF XLFD font name.
  */
-static char *mac_encodings[] = {
+static const char *mac_encodings[] = {
     "-MacRoman-0",    "-MacJapanese-0",   "-MacChinese-0",   "-MacKorean-0",
     "-MacArabic-0",   "-MacHebrew-0",     "-MacGreek-0",     "-MacRussian-0",
     "-MacRSymbol-0",  "-MacDevanagari-0", "-MacGurmukhi-0",  "-MacGujarati-0",
@@ -281,7 +281,7 @@ static int nmac_encodings = sizeof(mac_encodings)/sizeof(mac_encodings[0]);
 /*
  * ISO encoding names used when creating the BDF XLFD font name.
  */
-static char *iso_encodings[] = {
+static const char *iso_encodings[] = {
     "-ASCII-0", "-ISO10646-1", "-ISO8859-1"
 };
 static int niso_encodings = sizeof(iso_encodings)/sizeof(iso_encodings[0]);
@@ -289,7 +289,7 @@ static int niso_encodings = sizeof(iso_encodings)/sizeof(iso_encodings[0]);
 /*
  * Microsoft encoding names used when creating the BDF XLFD font name.
  */
-static char *ms_encodings[] = {
+static const char *ms_encodings[] = {
     "-Symbol-0", "-ISO10646-1", "-ShiftJIS-0", "-GB2312.1980-0", "-Big5-0",
     "-KSC5601.1987-0", "-KSC5601.1992-0"
 };
@@ -298,7 +298,7 @@ static int nms_encodings = sizeof(ms_encodings)/sizeof(ms_encodings[0]);
 /*
  * The propery names for all the XLFD properties.
  */
-static char *xlfd_props[] = {
+static const char *xlfd_props[] = {
     "FOUNDRY",
     "FAMILY_NAME",
     "WEIGHT_NAME",
@@ -322,7 +322,7 @@ static char *xlfd_props[] = {
  **************************************************************************/
 
 static FT_Library library;
-static FT_Face face;
+static FT_Face global_face;
 static FT_Size_Metrics imetrics;
 static TT_HoriHeader *horizontal;
 
@@ -348,7 +348,7 @@ static TT_HoriHeader *horizontal;
  * Returns the number of bytes added.
  */
 static int
-otf_get_english_string(FT_Face face, int nameID, int dash_to_space,
+otf_get_english_string(FT_Face local_face, int nameID, int dash_to_space,
                        char *name, int name_size)
 {
     int j, encid;
@@ -357,14 +357,14 @@ otf_get_english_string(FT_Face face, int nameID, int dash_to_space,
     unsigned char *s;
     unsigned short slen;
 
-    nrec = FT_Get_Sfnt_Name_Count(face);
+    nrec = FT_Get_Sfnt_Name_Count(local_face);
 
     for (encid = 1, j = 0; j < 2; j++, encid--) {
         /*
          * Locate one of the MS English font names.
          */
         for (i = 0; i < nrec; i++) {
-           FT_Get_Sfnt_Name(face, i, &sfntName);
+           FT_Get_Sfnt_Name(local_face, i, &sfntName);
            if (sfntName.platform_id == 3 &&
                sfntName.encoding_id == encid &&
                sfntName.name_id == nameID &&
@@ -412,7 +412,7 @@ otf_get_english_string(FT_Face face, int nameID, int dash_to_space,
      * name.
      */
     for (i = 0; i < nrec; i++) {
-        FT_Get_Sfnt_Name(face, i, &sfntName);
+        FT_Get_Sfnt_Name(local_face, i, &sfntName);
         if (sfntName.platform_id == 0 && sfntName.language_id == 0 &&
             sfntName.name_id == nameID) {
             s = sfntName.string;
@@ -456,20 +456,20 @@ otf_get_english_string(FT_Face face, int nameID, int dash_to_space,
  *
  **************************************************************************/
 
-static char *
-platform_name(short pid)
+static const char *
+platform_name(short local_pid)
 {
-    return (pid < nplatform_names) ?
-        platform_names[pid] : platform_names[nplatform_names - 1];
+    return (local_pid < nplatform_names) ?
+        platform_names[local_pid] : platform_names[nplatform_names - 1];
 }
 
-static char *
-encoding_name(short pid, short eid)
+static const char *
+encoding_name(short local_pid, short local_eid)
 {
     int nnames;
-    char **names;
+    const char **names;
 
-    switch (pid) {
+    switch (local_pid) {
       case 0: return "-ISO10646-1";
       case 1:
         nnames = nmac_encodings;
@@ -486,29 +486,30 @@ encoding_name(short pid, short eid)
       default: return "-Unknown-0";
     }
 
-    return (eid < nnames) ? names[eid] : "-Unknown-0";
+    return (local_eid < nnames) ? names[local_eid] : "-Unknown-0";
 }
 
-static char *spaces = "              ";
+static const char *spaces = "              ";
 
 static void
 print_encoding_table(void)
 {
     int ncmaps, i, j;
-    short pid, eid, lasteid;
-    char *np, *platform, encoding[64];
+    short local_pid, local_eid, lasteid;
+    const char *np, *platform;
+    char encoding[64];
 
     printf("Encoding tables available in the font:\n\n");
     printf("Platform%.*sEncoding\n", 6, spaces);
     printf("-------------------------------------------\n");
     printf("Default%.*sDefault%.*s(-pid %d -eid %d)\n",
            7, spaces, 7, spaces, DEFAULT_PLATFORM_ID, DEFAULT_ENCODING_ID);
-    ncmaps = face->num_charmaps;
+    ncmaps = global_face->num_charmaps;
     for (lasteid = -1, i = 0; i < ncmaps; i++) {
-        pid = face->charmaps[i]->platform_id;
-        eid = face->charmaps[i]->encoding_id;
-        platform = platform_name(pid);
-        np = encoding_name(pid, eid);
+        local_pid = global_face->charmaps[i]->platform_id;
+        local_eid = global_face->charmaps[i]->encoding_id;
+        platform = platform_name(local_pid);
+        np = encoding_name(local_pid, local_eid);
         np++;
         for (j = 0; j < 63 && *np != '-'; np++, j++)
           encoding[j] = *np;
@@ -518,8 +519,9 @@ print_encoding_table(void)
          * some platforms and causes a compilation warning.
          */
         printf("%s%.*s%s%.*s(-pid %hd -eid %hd)\n",
-               platform, (int) (14 - strlen(platform)), spaces,
-               encoding, (int) (14 - strlen(encoding)), spaces, pid, eid);
+               platform, (int)(14 - strlen(platform)), spaces,
+               encoding, (int)(14 - strlen(encoding)), spaces,
+               local_pid, local_eid);
     }
     (void)lasteid;
 }
@@ -541,7 +543,7 @@ make_xlfd_name(char *name, int name_size, FT_Long awidth, int ismono)
     FT_ULong val;
     char *r, *e;
     double dr, dp;
-    TT_OS2 *os2 = (TT_OS2 *)FT_Get_Sfnt_Table(face, ft_sfnt_os2);
+    TT_OS2 *os2 = (TT_OS2 *)FT_Get_Sfnt_Table(global_face, ft_sfnt_os2);
 
     /*
      * Default the foundry name to "FreeType" in honor of the project and
@@ -563,8 +565,8 @@ make_xlfd_name(char *name, int name_size, FT_Long awidth, int ismono)
      */
     *name++ = '-';
     if (face_name == 0) {
-        if((i = otf_get_english_string(face, BDFOTF_FAMILY_STRING, dashchar,
-                                       name, name_size)))
+        if((i = otf_get_english_string(global_face, BDFOTF_FAMILY_STRING,
+                                       dashchar, name, name_size)))
           name += i;
         else {
             (void) strcpy(name, "Unknown");
@@ -675,14 +677,14 @@ make_xlfd_name(char *name, int name_size, FT_Long awidth, int ismono)
      * platform id is unknown, assume the character set registry and encoding
      * are the XLFD default.
      */
-    if (nocmap || pid > 3)
+    if (nocmap || global_pid > 3)
       (void) strcpy(name, DEFAULT_XLFD_CSET);
     else {
         /*
          * Finally, determine the character set registry and encoding from the
          * platform and encoding ID.
          */
-        switch (pid) {
+        switch (global_pid) {
           case 0:
             /*
              * Apple Unicode platform, so "-Apple-Unicode" is the default.
@@ -694,35 +696,35 @@ make_xlfd_name(char *name, int name_size, FT_Long awidth, int ismono)
              * Macintosh platform, so choose from the Macintosh encoding
              * strings.
              */
-            if (eid < 0 || eid >= nmac_encodings)
+            if (global_eid < 0 || global_eid >= nmac_encodings)
               (void) strcpy(name, DEFAULT_XLFD_CSET);
             else
-              (void) strcpy(name, mac_encodings[eid]);
+              (void) strcpy(name, mac_encodings[global_eid]);
             break;
           case 2:
             /*
              * ISO platform, so choose from the ISO encoding strings.
              */
-            if (eid < 0 || eid >= niso_encodings)
+            if (global_eid < 0 || global_eid >= niso_encodings)
               (void) strcpy(name, DEFAULT_XLFD_CSET);
             else
-              (void) strcpy(name, iso_encodings[eid]);
+              (void) strcpy(name, iso_encodings[global_eid]);
             break;
           case 3:
             /*
              * Microsoft platform, so choose from the MS encoding strings.
              */
-            if (eid < 0 || eid >= nms_encodings)
+            if (global_eid < 0 || global_eid >= nms_encodings)
               (void) strcpy(name, DEFAULT_XLFD_CSET);
             else
-              (void) strcpy(name, ms_encodings[eid]);
+              (void) strcpy(name, ms_encodings[global_eid]);
             break;
         }
     }
 }
 
 static int
-generate_font(FILE *out, char *iname, char *oname)
+generate_font(FILE *out, char *iname, const char *oname)
 {
     int eof, ismono, i;
     FILE *tmp;
@@ -734,10 +736,11 @@ generate_font(FILE *out, char *iname, char *oname)
     unsigned char *bp;
     double dw;
     char *xp, xlfd[BUFSIZ];
-    char *tmpdir, tmpfile[BUFSIZ];
+    const char *tmpdir;
+    char tmpfile[BUFSIZ];
 
-    imetrics = face->size->metrics;
-    horizontal = (TT_HoriHeader *)FT_Get_Sfnt_Table(face, ft_sfnt_hhea);
+    imetrics = global_face->size->metrics;
+    horizontal = (TT_HoriHeader *)FT_Get_Sfnt_Table(global_face, ft_sfnt_hhea);
 
     /*
      * Clear the BBX.
@@ -797,7 +800,7 @@ generate_font(FILE *out, char *iname, char *oname)
           continue;
 
         if (nocmap) {
-            if (code >= face->num_glyphs)
+            if (code >= global_face->num_glyphs)
 
               /*
                * At this point, all the glyphs are done.
@@ -805,7 +808,7 @@ generate_font(FILE *out, char *iname, char *oname)
               break;
             idx = code;
         } else
-          idx = FT_Get_Char_Index(face, code);
+          idx = FT_Get_Char_Index(global_face, code);
 
         /*
          * If the glyph could not be loaded for some reason, or a subset is
@@ -813,17 +816,17 @@ generate_font(FILE *out, char *iname, char *oname)
          * continue.
          */
 
-        if (idx <= 0 || FT_Load_Glyph(face, idx, load_flags))
+        if (idx <= 0 || FT_Load_Glyph(global_face, idx, load_flags))
           continue;
 
-        if (FT_Render_Glyph(face->glyph, FT_RENDER_MODE_MONO))
+        if (FT_Render_Glyph(global_face->glyph, FT_RENDER_MODE_MONO))
           continue;
 
         /*
          * Determine the DWIDTH (device width, or advance width in TT terms)
          * and the SWIDTH (scalable width) values.
          */
-        dwidth = face->glyph->metrics.horiAdvance >> 6;
+        dwidth = global_face->glyph->metrics.horiAdvance >> 6;
         dw = (double) dwidth;
         swidth = (FT_Short) ((dw * 72000.0) / swscale);
 
@@ -833,9 +836,9 @@ generate_font(FILE *out, char *iname, char *oname)
          */
         sx = sy = 0xffff;
         ex = ey = 0;
-        bp = face->glyph->bitmap.buffer;
-        for (y = 0; y < face->glyph->bitmap.rows; y++) {
-            for (x = 0; x < face->glyph->bitmap.width; x++) {
+        bp = global_face->glyph->bitmap.buffer;
+        for (y = 0; y < global_face->glyph->bitmap.rows; y++) {
+            for (x = 0; x < global_face->glyph->bitmap.width; x++) {
                 if (bp[x >> 3] & (0x80 >> (x & 7))) {
                     if (x < sx) sx = x;
                     if (x > ex) ex = x;
@@ -843,7 +846,7 @@ generate_font(FILE *out, char *iname, char *oname)
                     if (y > ey) ey = y;
                 }
             }
-            bp += face->glyph->bitmap.pitch;
+            bp += global_face->glyph->bitmap.pitch;
         }
 
         /*
@@ -877,8 +880,8 @@ generate_font(FILE *out, char *iname, char *oname)
          */
         wd = ex - sx;
         ht = ey - sy;
-        x_off = sx + face->glyph->bitmap_left;
-        y_off = sy + face->glyph->bitmap_top - face->glyph->bitmap.rows;
+        x_off = sx + global_face->glyph->bitmap_left;
+        y_off = sy + global_face->glyph->bitmap_top - global_face->glyph->bitmap.rows;
 
         bbx.maxas = MAX(bbx.maxas, ht + y_off);
         bbx.maxds = MAX(bbx.maxds, -y_off);
@@ -907,7 +910,7 @@ generate_font(FILE *out, char *iname, char *oname)
          */
         eof = fprintf(tmp, "BITMAP\n");
 
-        bp = face->glyph->bitmap.buffer + (sy * face->glyph->bitmap.pitch);
+        bp = global_face->glyph->bitmap.buffer + (sy * global_face->glyph->bitmap.pitch);
         for (y = 0; eof != EOF && y < ey - sy; y++) {
             for (idx = 0, x = 0; eof != EOF && x < ex - sx; x++) {
                 if (x > 0 && (x & 7) == 0) {
@@ -920,7 +923,7 @@ generate_font(FILE *out, char *iname, char *oname)
                 if (bp[(x+sx) >> 3] & (0x80 >> ((x+sx) & 7)))
                   idx |= (0x80 >> (x & 7));
             }
-            bp += face->glyph->bitmap.pitch;
+            bp += global_face->glyph->bitmap.pitch;
             if (eof != EOF)
               /*
                * Because of the structure of the loop, the last byte should
@@ -1054,8 +1057,8 @@ generate_font(FILE *out, char *iname, char *oname)
     /*
      * Get the copyright string from the font.
      */
-    (void) otf_get_english_string(face, BDFOTF_COPYRIGHT_STRING, 0, xlfd,
-                                  sizeof(xlfd));
+    (void)otf_get_english_string(global_face, BDFOTF_COPYRIGHT_STRING, 0, xlfd,
+                                 sizeof(xlfd));
     fprintf(out, "COPYRIGHT \"%s\"\n", xlfd);
 
     /*
@@ -1064,8 +1067,8 @@ generate_font(FILE *out, char *iname, char *oname)
      * font file which some systems can take advantage of, and _OTF_PSNAME
      * provides the Postscript name of the font if it exists.
      */
-    (void) otf_get_english_string(face, BDFOTF_POSTSCRIPT_STRING, 0, xlfd,
-                                  sizeof(xlfd));
+    (void)otf_get_english_string(global_face, BDFOTF_POSTSCRIPT_STRING, 0, xlfd,
+                                 sizeof(xlfd));
     fprintf(out, "_OTF_FONTFILE \"%s\"\n_OTF_PSNAME \"%s\"\n", iname, xlfd);
 
     fprintf(out, "ENDPROPERTIES\n");
@@ -1108,50 +1111,50 @@ generate_font(FILE *out, char *iname, char *oname)
 }
 
 static int
-generate_bdf(FILE *out, char *iname, char *oname)
+generate_bdf(FILE *out, char *iname, const char *oname)
 {
     FT_Long i;
 
     /*
      * Get the requested cmap.
      */
-    for (i = 0; i < face->num_charmaps; i++) {
-        if (face->charmaps[i]->platform_id == pid &&
-            face->charmaps[i]->encoding_id == eid)
+    for (i = 0; i < global_face->num_charmaps; i++) {
+        if (global_face->charmaps[i]->platform_id == global_pid &&
+            global_face->charmaps[i]->encoding_id == global_eid)
           break;
     }
-    if (i == face->num_charmaps && pid == 3 && eid == 1) {
+    if (i == global_face->num_charmaps && global_pid == 3 && global_eid == 1) {
         /*
-         * Make a special case when this fails with pid == 3 and eid == 1.
-         * Change to eid == 0 and try again.  This captures the two possible
-         * cases for MS fonts.  Some other method should be used to cycle
-         * through all the alternatives later.
+         * Make a special case when this fails with global_pid == 3 and
+         * global_eid == 1.  Change to global_eid == 0 and try again.
+         * This captures the two possible cases for MS fonts.  Some other
+         * method should be used to cycle through all the alternatives later.
          */
-        for (i = 0; i < face->num_charmaps; i++) {
-        if (face->charmaps[i]->platform_id == pid &&
-            face->charmaps[i]->encoding_id == 0)
+        for (i = 0; i < global_face->num_charmaps; i++) {
+        if (global_face->charmaps[i]->platform_id == global_pid &&
+            global_face->charmaps[i]->encoding_id == 0)
               break;
         }
-        if (i < face->num_charmaps) {
-            pid = 3;
-            eid = 1;
-            FT_Set_Charmap(face, face->charmaps[i]);
+        if (i < global_face->num_charmaps) {
+            global_pid = 3;
+            global_eid = 1;
+            FT_Set_Charmap(global_face, global_face->charmaps[i]);
         } else {
             /*
              * No CMAP was found.
              */
             nocmap = 1;
-            pid = eid = -1;
+            global_pid = global_eid = -1;
         }
     } else {
-        FT_Set_Charmap(face, face->charmaps[i]);
+        FT_Set_Charmap(global_face, global_face->charmaps[i]);
         nocmap = 0;
     }
 
     if (nocmap && verbose) {
         fprintf(stderr,
-                    "%s: no character map for platform %d encoding %d.  ",
-                    prog, pid, eid);
+                "%s: no character map for platform %d encoding %d.  ",
+                prog, global_pid, global_eid);
         fprintf(stderr, "Generating all glyphs.\n");
     }
 
@@ -1263,7 +1266,8 @@ int
 main(int argc, char *argv[])
 {
     int res, pet;
-    char *infile, *outfile, *iname, *oname;
+    char *infile, *outfile, *iname;
+    const char *oname;
     FILE *out, *mapin;
 
     if ((prog = strrchr(argv[0], '/')))
@@ -1354,7 +1358,7 @@ main(int argc, char *argv[])
                     /*
                      * Set the platform ID.
                      */
-                    pid = atoi(argv[0]);
+                    global_pid = atoi(argv[0]);
                 } else
                   /*
                    * Set the point size.
@@ -1376,7 +1380,7 @@ main(int argc, char *argv[])
                      */
                     argc--;
                     argv++;
-                    eid = atoi(argv[0]);
+                    global_eid = atoi(argv[0]);
                 }
                 break;
               case 'r':
@@ -1458,12 +1462,12 @@ main(int argc, char *argv[])
     /*
      * Check the platform and encoding IDs.
      */
-    if (pid < 0 || pid > 255) {
-        fprintf(stderr, "%s: invalid platform ID '%d'.\n", prog, pid);
+    if (global_pid < 0 || global_pid > 255) {
+        fprintf(stderr, "%s: invalid platform ID '%d'.\n", prog, global_pid);
         exit(1);
     }
-    if (eid < 0 || eid > 65535) {
-        fprintf(stderr, "%s: invalid encoding ID '%d'.\n", prog, eid);
+    if (global_eid < 0 || global_eid > 65535) {
+        fprintf(stderr, "%s: invalid encoding ID '%d'.\n", prog, global_eid);
         exit(1);
     }
 
@@ -1535,7 +1539,7 @@ main(int argc, char *argv[])
     /*
      * Open the input file.
      */
-    if ((res = FT_New_Face(library, infile, 0, &face))) {
+    if ((res = FT_New_Face(library, infile, 0, &global_face))) {
         if (out != stdout) {
             fclose(out);
             (void) unlink(outfile);
@@ -1555,12 +1559,12 @@ main(int argc, char *argv[])
          * Set the instance resolution and point size and the relevant
          * metrics.
          */
-        FT_Set_Char_Size(face, 0, point_size * 64, hres, vres);
+        FT_Set_Char_Size(global_face, 0, point_size * 64, hres, vres);
 
         /*
          * Set the global units per em value for convenience.
          */
-        upm = face->units_per_EM;
+        upm = global_face->units_per_EM;
 
         /*
          * Generate the BDF font from the TrueType font.
@@ -1576,7 +1580,7 @@ main(int argc, char *argv[])
     /*
      * Close the input and output files.
      */
-    (void) FT_Done_Face(face);
+    (void) FT_Done_Face(global_face);
     if (out != stdout) {
         fclose(out);
         if (res < 0)

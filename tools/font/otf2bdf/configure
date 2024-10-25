@@ -3595,19 +3595,23 @@ fi
 
 
 
-if test "x${CC}" = "xgcc"; then
-	XX_CFLAGS="-Wall -pedantic"
-else
-	case "${host}" in
-  		alpha-dec-osf*)
-        	XX_CFLAGS="-std1 -O2 -g3"
-       		;;
-  		*)
-          	XX_CFLAGS=""
-       		;;
-	esac
-fi
+if test "x${CC}" = "xgcc" && test "x${GCC}" = "xyes"
+then :
 
+  XX_CFLAGS="-Wall -Wextra -Werror=shadow -Wwrite-strings -pedantic"
+
+else case e in #(
+  e)
+  case "${host}" in #(
+  alpha-dec-osf*) :
+    XX_CFLAGS="-std1 -O2 -g3" ;; #(
+  *-*-*) :
+    XX_CFLAGS="" ;; #(
+  *) :
+     ;;
+esac ;;
+esac
+fi
 # Extract the first word of "rm", so it can be a program name with args.
 set dummy rm; ac_word=$2
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
