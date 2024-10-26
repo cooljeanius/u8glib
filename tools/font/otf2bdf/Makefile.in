@@ -47,9 +47,9 @@ bindir = @bindir@
 mandir = @mandir@
 datarootdir = @datarootdir@
 
-all: otf2bdf config.h
+all: otf2bdf @MAINT@ config.h
 
-otf2bdf: $(OBJS) config.h
+otf2bdf: $(OBJS) @MAINT@ config.h
 	$(CC) $(STATIC) $(LDFLAGS) -o otf2bdf $(OBJS) $(LIBS)
 
 clean:
@@ -79,7 +79,7 @@ uninstall:
 	$(RM) -f $(mandir)/man1/otf2bdf.1
 
 configure: configure.ac
-	autoconf
+	if test $@ -ot -$<; then autoconf; else echo "$@ is up-to-date."; fi
 
 config.h: config.h.in config.status
 	./config.status $@ && touch $@

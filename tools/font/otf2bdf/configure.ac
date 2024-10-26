@@ -7,6 +7,28 @@ AC_CONFIG_SRCDIR([otf2bdf.c])
 AC_CONFIG_HEADERS([config.h])
 AC_REQUIRE_AUX_FILE([mkinstalldirs])dnl
 
+dnl# since we don't use automake in this subdir, we have to open-code this instead:
+AC_MSG_CHECKING([whether to enable maintainer-specific portions of Makefiles])
+AC_ARG_ENABLE([maintainer-mode],
+[AS_HELP_STRING([--enable-maintainer-mode],[enable make rules and
+                          dependencies not useful (and sometimes confusing)
+                          to the casual installer])],
+      [USE_MAINTAINER_MODE=${enableval}],
+      [USE_MAINTAINER_MODE=no])
+AC_MSG_RESULT([${USE_MAINTAINER_MODE}])
+AC_SUBST([MAINTAINER_MODE_TRUE])dnl
+AC_SUBST([MAINTAINER_MODE_FALSE])dnl
+  ## Pass the result down to the Makefile:
+if test "x${USE_MAINTAINER_MODE}" = "xyes"; then
+  MAINTAINER_MODE_TRUE=""
+  MAINTAINER_MODE_FALSE='#'
+else
+  MAINTAINER_MODE_TRUE='#'
+  MAINTAINER_MODE_FALSE=""
+fi
+MAINT="${MAINTAINER_MODE_TRUE}"
+AC_SUBST([MAINT])dnl
+
 dnl# Checks for programs.
 AC_PROG_CC
 AC_PATH_PROG([FREETYPE_CONFIG],[freetype-config],[false])dnl
