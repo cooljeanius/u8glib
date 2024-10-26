@@ -140,7 +140,7 @@ static uint8_t u8g_dev_ssd1325_nhd27oled_bw_fn(u8g_t *u8g, u8g_dev_t *dev, uint8
       break;
     case U8G_DEV_MSG_PAGE_NEXT:
       {
-	uint8_t i;
+	u8g_uint_t i;
 	u8g_pb_t *pb = (u8g_pb_t *)(dev->dev_mem);
 	uint8_t *p = pb->buf;
 	u8g_uint_t cnt;
