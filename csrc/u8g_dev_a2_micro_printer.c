@@ -131,7 +131,8 @@ uint8_t u8g_dev_a2_micro_printer_double_fn(u8g_t *u8g, u8g_dev_t *dev, uint8_t m
       break;
     case U8G_DEV_MSG_PAGE_NEXT:
       {
-        uint8_t y, i;
+        uint8_t y;
+	u8g_uint_t i;
         uint16_t j;
         uint8_t *ptr;
         uint8_t *p2;
