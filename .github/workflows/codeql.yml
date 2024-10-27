@@ -91,23 +91,39 @@ jobs:
           # https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
           # queries: security-extended,security-and-quality
 
-      # If the analyze step fails for 1 of the languages you are analyzing with
-      # "We were unable to automatically build your code", then modify the
-      # matrix above to set the build mode to "manual" for that language.
-      # Then modify this step to build your code.
-      # Command-line programs to run using the OS shell; see:
-      # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
-      - name: Manual build message
-        if: matrix.build-mode == 'manual'
-        shell: bash
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Extra coverage build (C)
         run: |
-          echo ''
-          echo 'If you are using a "manual" build mode for one or more of the' \
-            'languages you are analyzing, replace this with the commands to' \
-            'build your code, for example:'
-          echo '  make bootstrap'
-          echo '  make release'
-          exit 1
+          FINAL_CPPFLAGS="-I."
+          for myincdir in csrc cppsrc dogmsrc nonarduino; do \
+            if test -d "${myincdir}" && test -r "${myincdir}" && test -n "$(ls "${myincdir}"/*.h)"; then \
+              FINAL_CPPFLAGS="${FINAL_CPPFLAGS} -I${myincdir} -iquote ${myincdir}"; \
+            fi; \
+          done
+          sync && echo "FINAL_CPPFLAGS are ${FINAL_CPPFLAGS}"
+          # shellcheck disable=SC2001,SC2044,2086
+          for cfile in $(find . -name '*.c' -type f); do \
+            cobjfile="$(echo "${cfile}" | sed "s/\.c/.o/g")"; \
+            cfiledir="$(dirname "${cfile}")"; \
+            if test ! -e "${cobjfile}"; then \
+              echo "gcc -c -w -Wno-error -Wfatal-errors ${FINAL_CPPFLAGS} -I\"${cfiledir}\" -iquote \"${cfiledir}\" -I\"${cfiledir}\"/.. -iquote \"${cfiledir}\"/.. ${cfile}"; \
+              gcc -c -w -Wno-error -Wfatal-errors ${FINAL_CPPFLAGS} -I"${cfiledir}" -iquote "${cfiledir}" -I"${cfiledir}"/.. -iquote "${cfiledir}"/.. ${cfile} || stat -t "${cfile}" || echo "cfile is ${cfile}"; \
+            else \
+              sync && echo "objfile ${cobjfile} already exists for ${cfile}."; \
+              cp -v "${cobjfile}" "${cfiledir}" || cp -v "${cobjfile}" . || cp -v "${cobjfile}" .. || (if test -d /tmp && test -w /tmp; then cp -v "${cobjfile}" /tmp; fi) || stat -t "${cobjfile}"; \
+            fi; \
+          done
+          sync && echo "done with the \"Extra coverage build (C)\" step"
+
+      - name: Extra coverage build (C++)
+        run: |
+          # shellcheck disable=SC2044
+          for cppfile in $(find . -name '*.cpp' -type f); do \
+            sync && echo "One last attempt at compiling ${cppfile}..."; \
+            g++ -c -Wfatal-errors "${cppfile}" || g++ -c -w -Wfatal-errors -I. "${cppfile}" || g++ -c -w -Wno-error -Wfatal-errors -fpermissive -I. -I.. "${cppfile}" || stat -t "${cppfile}"; \
+          done
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
