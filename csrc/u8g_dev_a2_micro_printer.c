@@ -53,7 +53,9 @@ uint8_t u8g_dev_a2_micro_printer_fn(u8g_t *u8g, u8g_dev_t *dev, uint8_t msg, voi
       break;
     case U8G_DEV_MSG_PAGE_NEXT:
       {
-        uint8_t y, i, j;
+        uint8_t y;
+	u8g_uint_t i;
+        int j;
         uint8_t *ptr;
         u8g_pb_t *pb = (u8g_pb_t *)(dev->dev_mem);
         
