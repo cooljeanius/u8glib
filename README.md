@@ -12,11 +12,6 @@ Left: NHD-2.7-12864 OLED (SSD1325), right: EA DOGS102 LCD (UC1701)
  * [Gallery](https://github.com/olikraus/u8glib/wiki/gallery)
  * Latest version of U8glib for Arduino is available in the Library Manager 
  * [Download Arduino Version from Github](https://github.com/olikraus/U8glib_Arduino/releases/latest)
- * [Bintray](https://bintray.com/olikraus/u8glib) download links:
-  * [U8glib for Arduino](https://bintray.com/olikraus/u8glib/Arduino)
-  * [U8glib for AVR](https://bintray.com/olikraus/u8glib/AVR)
-  * [U8glib for ARM](https://bintray.com/olikraus/u8glib/ARM)
-  * Converter for BDF fonts: [bdf2u8g_101.exe on google drive](https://drive.google.com/folderview?id=0B5b6Dv0wCeCRLWJkYTh2TUlYVDg&usp=sharing).
  * Supported environments:
   * [Arduino (ATMEGA and ARM)](http://www.arduino.cc/)
   * [AVR (ATMEGA)](https://github.com/olikraus/u8glib/wiki/avr)
