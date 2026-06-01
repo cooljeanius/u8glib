@@ -741,9 +741,9 @@ generate_font(FILE *out, char *iname, const char *oname)
 {
     int eof, ismono, i;
     FILE *tmp;
-    FT_Short x, y, dwidth, swidth;
+    FT_Short dwidth, swidth;
     FT_Short y_off, x_off;
-    FT_Long sx, sy, ex, ey, wd, ht;
+    FT_Long x, y, sx, sy, ex, ey, wd, ht;
     FT_Long code, idx, ng, aw;
     FT_UShort remapped_code;
     unsigned char *bp;
