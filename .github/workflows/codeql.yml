@@ -20,12 +20,14 @@ on:
       - autofix*alert*
       - alert*autofix*
       - cooljeanius-patch-*
+      - dependabot/*
   pull_request:
     branches:
       - master
       - autofix*alert*
       - alert*autofix*
       - cooljeanius-patch-*
+      - dependabot/*
   schedule:
     - cron: '35 23 * * 0'
 
@@ -56,6 +58,8 @@ jobs:
         include:
           - language: c-cpp
             build-mode: autobuild
+          - language: actions
+            build-mode: none
             # CodeQL supports the following values keywords for 'language':
             # 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript',
             # 'python', 'ruby', 'swift'
@@ -72,7 +76,7 @@ jobs:
             # https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/codeql-code-scanning-for-compiled-languages
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
@@ -95,6 +99,7 @@ jobs:
         uses: github/codeql-action/autobuild@v4
 
       - name: Extra coverage build (C)
+        if: matrix.language == 'c-cpp'
         run: |
           FINAL_CPPFLAGS="-I."
           for myincdir in csrc cppsrc dogmsrc nonarduino; do \
@@ -118,6 +123,7 @@ jobs:
           sync && echo "done with the \"Extra coverage build (C)\" step"
 
       - name: Extra coverage build (C++)
+        if: matrix.language == 'c-cpp'
         run: |
           # shellcheck disable=SC2044
           for cppfile in $(find . -name '*.cpp' -type f); do \
