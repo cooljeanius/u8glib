@@ -41,7 +41,8 @@ AC_PATH_PROG([VALGRIND],[valgrind])dnl
 AM_CONDITIONAL([HAVE_VALGRIND],[test "x${VALGRIND}" != "x" && test -x "${VALGRIND}"])dnl
 
 # Checks for libraries.
-LT_PREREQ([2.2])
+dnl# https://lists.gnu.org/archive/html/libtool/2026-01/msg00001.html
+LT_PREREQ([2.5.4])dnl
 LT_INIT([disable-static])dnl
 
 # debug

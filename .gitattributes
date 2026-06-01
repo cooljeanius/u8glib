@@ -3,6 +3,7 @@ aclocal.m4 linguist-generated
 ar-lib linguist-vendored
 compile linguist-vendored
 config.guess linguist-vendored
+config.h.in linguist-generated
 config.sub linguist-vendored
 configure linguist-generated
 configure.scan linguist-generated
@@ -11,6 +12,7 @@ install-sh linguist-vendored
 ltmain.sh linguist-vendored
 m4/libtool.m4 linguist-vendored
 m4/lt*.m4 linguist-vendored
+Makefile.in linguist-generated
 missing linguist-vendored
 sys/msp430/*/Makefile.gnu linguist-language=makefile
 

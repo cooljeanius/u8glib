@@ -97,6 +97,8 @@ jobs:
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v4
+        env:
+          MAKEFLAGS: "-ki"
 
       - name: Extra coverage build (C)
         if: matrix.language == 'c-cpp'
