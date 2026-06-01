@@ -20,12 +20,14 @@ on:
       - autofix*alert*
       - alert*autofix*
       - cooljeanius-patch-*
+      - dependabot/*
   pull_request:
     branches:
       - master
       - autofix*alert*
       - alert*autofix*
       - cooljeanius-patch-*
+      - dependabot/*
   schedule:
     - cron: '35 23 * * 0'
 
