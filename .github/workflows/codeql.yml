@@ -58,6 +58,8 @@ jobs:
         include:
           - language: c-cpp
             build-mode: autobuild
+          - language: actions
+            build-mode: none
             # CodeQL supports the following values keywords for 'language':
             # 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript',
             # 'python', 'ruby', 'swift'
@@ -97,6 +99,7 @@ jobs:
         uses: github/codeql-action/autobuild@v4
 
       - name: Extra coverage build (C)
+        if: matrix.language == 'c-cpp'
         run: |
           FINAL_CPPFLAGS="-I."
           for myincdir in csrc cppsrc dogmsrc nonarduino; do \
@@ -120,6 +123,7 @@ jobs:
           sync && echo "done with the \"Extra coverage build (C)\" step"
 
       - name: Extra coverage build (C++)
+        if: matrix.language == 'c-cpp'
         run: |
           # shellcheck disable=SC2044
           for cppfile in $(find . -name '*.cpp' -type f); do \
