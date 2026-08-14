@@ -30,6 +30,10 @@ AC_REQUIRE_PROGS
 AC_PROG_CPP
 AC_PROG_CXX
 AM_PROG_AR
+if test "x${ac_cv_prog_AR}" = "x"; then
+  test -z "${ac_cv_prog_AR}" || unset ac_cv_prog_AR
+  AC_PROG_AR
+fi
 AM_PROG_AS
 AC_PROG_INSTALL
 AC_PROG_LN_S
